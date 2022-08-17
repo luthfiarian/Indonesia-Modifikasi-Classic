@@ -1,0 +1,23 @@
+{
+  "name": "pt-imc",
+  "version": "1.0.0",
+  "description": "Website company profile PT. Inti Maju Cemerlang yang dibuat oleh Mahasiswa Universitas Muhmmadiyah Sidoarjo yang bedasarkan program magang industri tahun 2022-2023",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luthfionumsida/PT-IMC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luthfionumsida/PT-IMC/issues"
+  },
+  "homepage": "https://github.com/luthfionumsida/PT-IMC#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.1.8"
+  }
+}
