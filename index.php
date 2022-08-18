@@ -33,12 +33,12 @@
                     </button>
                 <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
                     <ul class="block lg:flex">
-                        <li class="group"><a href="#" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Beranda</a></li>
-                        <li class="group"><a href="#" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Galeri</a></li>
-                        <li class="group"><a href="#" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Tentang Kami</a></li>
-                        <li class="group"><a href="#" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Kostumer</a></li>
-                        <li class="group"><a href="#" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Kontak</a></li>
-                        <li class="group"><a href="#" class="text-base text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Masuk</a></li>
+                        <li class="group"><a href="#" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Beranda</a></li>
+                        <li class="group"><a href="#" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Profil</a></li>
+                        <li class="group"><a href="#" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Galeri</a></li>
+                        <li class="group"><a href="#" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Kostumer</a></li>
+                        <li class="group"><a href="#" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Kontak</a></li>
+                        <li class="group"><a href="#" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Masuk</a></li>
                     </ul>
                 </nav>
                 </div>
@@ -47,7 +47,7 @@
     </header>
     <content class="pt-3.5">
         <!-- Hero Section -->
-        <section id="beranda" class="pt-36">
+        <section id="beranda" class="pt-36 pb-32">
             <div class="container">
                 <div class="flex flex-wrap">
                     <div class="w-full self-center px-4 lg:w-1/2">
@@ -77,6 +77,49 @@
             </div>
         </section>
         <!-- End Hero Section -->
+
+        <!-- Galeri Section -->
+        <section id="galeri" class="pt-36 pb-16 bg-slate-100">
+            <div class="container">
+                <!-- Bagian header galeri -->
+                <div class="w-full px-4">
+                    <div class="max-w-xl mx-auto text-center mb-16">
+                        <h2 class="font-bold text-3xl mb-2 text-dark">Galeri</h2>
+                        <hr class="w-24 border-b-2 mx-auto mb-3 mt-1 border-primary">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum molestiae iusto earum, totam aperiam esse!</p>
+                    </div>
+                </div>
+                <!-- Bagian Foto Galeri -->
+                <div class="w-full px-4 flex flex-wrap justify-center xl:w-9/12 xl:mx-auto">
+                    <div class="mb-12 p-4 md:w-1/2 lg:w-1/3">
+                        <div class="rounded-md shadow-md overflow-hidden hover:shadow-2xl transition duration-300 ease-in-out">
+                            <img src="dist/img/pic1.png" alt="Gambar 1" class="w-full">
+                        </div>
+                    </div>
+                    <div class="mb-12 p-4 md:w-1/2 lg:w-1/3">
+                        <div class="rounded-md shadow-md overflow-hidden hover:shadow-2xl transition duration-300 ease-in-out">
+                            <img src="dist/img/pic2.png" alt="Gambar 2" class="w-full">
+                        </div>
+                    </div>
+                    <div class="mb-12 p-4 md:w-1/2 lg:w-1/3">
+                        <div class="rounded-md shadow-md overflow-hidden hover:shadow-2xl transition duration-300 ease-in-out">
+                            <img src="dist/img/pic3.png" alt="Gambar 3" class="w-full">
+                        </div>
+                    </div>
+                    <div class="mb-12 p-4 md:w-1/2 lg:w-1/3">
+                        <div class="rounded-md shadow-md overflow-hidden hover:shadow-2xl transition duration-300 ease-in-out">
+                            <img src="dist/img/pic1.png" alt="Gambar 1" class="w-full">
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full px-4">
+                    <div class="max-w-xl mx-auto text-center mb-16">
+                        <a href="#" class="text-base font-semibold text-white bg-primary py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">Lainnya</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Galeri Section -->
     </content>
 
 
