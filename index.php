@@ -1,3 +1,6 @@
+<?php 
+    include "resolution.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +16,11 @@
 
     <!-- CSS -->
     <link href="dist/output.css" rel="stylesheet">
+
+    <!-- CDN 1. Swipper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
 </head>
 <body>
     <!-- Navbar -->
@@ -45,6 +53,7 @@
             </div>
          </div>
     </header>
+
     <content class="pt-3.5">
         <!-- Hero Section -->
         <section id="beranda" class="pt-36 pb-32">
@@ -79,6 +88,9 @@
         <!-- End Hero Section -->
 
         <!-- Profil Section -->
+        <?php 
+            
+        ?>
         <section id="profil" class="pt-36 pb-32">
             <div class="container">
                 <div class="w-full px-4">
@@ -98,13 +110,13 @@
                             </a>
                         </div>
                         <div class="mb-12 p-4 lg:w-1/2">
-                            <iframe class="rounded-lg shadow-2xl mx-auto" width="560" height="300" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.91209663032!2d112.6838822153789!3d-7.3637499745065105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e339654a0f67%3A0x11d6f004fb5d120d!2sPT.%20Inti%20Maju%20Cermerlang!5e0!3m2!1sid!2sid!4v1660839741506!5m2!1sid!2sid"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe class="rounded-lg shadow-2xl mx-auto" width="<?php echo $w_reso; ?>" height="<?php echo $h_reso; ?>" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.91209663032!2d112.6838822153789!3d-7.3637499745065105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e339654a0f67%3A0x11d6f004fb5d120d!2sPT.%20Inti%20Maju%20Cermerlang!5e0!3m2!1sid!2sid!4v1660839741506!5m2!1sid!2sid"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
-                <div class="w-full px-4">
-                    <div class="max-w mx-auto mb-20 justify-center">
-                        <iframe class="rounded-lg shadow-2xl mx-auto" width="560" height="315" src="https://www.youtube.com/embed/ps5pWJdo0qU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="w-full px-2 md:px-4">
+                    <div class="max-w-xl mx-auto mb-20">
+                        <iframe class="rounded-lg shadow-2xl mx-auto" width="<?php echo $w_reso; ?>" height="<?php echo $h_reso; ?>" src="https://www.youtube.com/embed/ps5pWJdo0qU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="max-w-xl mx-auto text-center mb-5">
                         <a href="#" class="text-base font-semibold text-white bg-primary py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">Selengkapnya</a>
@@ -156,6 +168,82 @@
             </div>
         </section>
         <!-- End Galeri Section -->
+
+        <!-- In Progress Customer Section -->
+        <section id="progress" class="pt-36 pb-16 bg-cyan-900">
+            <div class="container">
+                <div class="w-full px-4">
+                    <div class="max-w-xl mx-auto text-center mb-16">
+                        <h2 class="font-bold text-3xl mb-2 text-white">In Progess</h2>
+                        <hr class="w-24 border-b-2 mx-auto mb-3 mt-1 border-primary rounded-full">
+                        <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum molestiae iusto earum, totam aperiam esse!</p>
+                    </div>
+                    <!-- Slider main container -->
+                    <div class="swiper mySwiper shadow-2xl">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide mb-1">
+                                <div class="w-full h-full bg-slate-200 rounded-md">
+                                    <div class="px-10 py-10">
+                                        <h3 class="font-bold text-xl md:text-2xl">Jhon Doe</h3>
+                                        <p class="font-semibold mb-5">Xenia 2014 | Jeep</p>
+                                        <table class="mx-auto mb-10">
+                                            <tr>
+                                                <td class="w-1/2 pr-5"><img src="dist/img/mobil1.png" class="h-24 md:h-48 w-full rounded-sm" alt="Foto Customer 1"></td>
+                                                <td class="w-1/2 pr-5"><img src="dist/img/mobil2.png" class="h-24 md:h-48 w-full rounded-sm" alt="Foto Customer 1"></td>
+                                            </tr>
+                                        </table>
+                                        <!-- Progress Pengerjaan Mobil -->
+                                        <div class="flex w-full">
+                                            <div class="w-5/6">
+                                                <div class="mx-auto w-[80%] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"><div class="bg-blue-600 mr-5 h-2.5 rounded-full w-[45%]"></div></div>
+                                            </div>
+                                            <div class="w-1/6">
+                                                <p class="font-semibold">45%</p>
+                                            </div>
+                                        </div>
+                                        <p class="font-light mt-5">Progress : Pemasangan Lampu</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="w-full h-full bg-slate-200 rounded-md">
+                                    <div class="px-10 py-10">
+                                        <h3 class="font-bold text-xl md:text-2xl">Jhon Doe</h3>
+                                        <p class="font-semibold mb-5">Xenia 2014 | Jeep</p>
+                                        <table class="mx-auto mb-10">
+                                            <tr>
+                                                <td class="w-1/2 pr-5"><img src="dist/img/mobil1.png" class="h-24 md:h-48 w-full rounded-sm" alt="Foto Customer 1"></td>
+                                                <td class="w-1/2 pr-5"><img src="dist/img/mobil2.png" class="h-24 md:h-48 w-full rounded-sm" alt="Foto Customer 1"></td>
+                                            </tr>
+                                        </table>
+                                        <!-- Progress Pengerjaan Mobil -->
+                                        <div class="flex w-full">
+                                            <div class="w-5/6">
+                                                <div class="mx-auto w-[80%] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"><div class="bg-blue-600 mr-5 h-2.5 rounded-full w-[45%]"></div></div>
+                                            </div>
+                                            <div class="w-1/6">
+                                                <p class="font-semibold">45%</p>
+                                            </div>
+                                        </div>
+                                        <p class="font-light mt-5">Progress : Pemasangan Lampu</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <div class="w-full px-4">
+                    <div class="max-w-xl mx-auto text-center my-16">
+                        <a href="#" class="text-base font-semibold text-white bg-primary py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">Cek Milik Anda</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End In Progress Customer Section -->
     </content>
     
     <!-- Footer -->
@@ -165,9 +253,9 @@
             <div class="w-full px-4">
                 <img src="dist/img/logo.png" width="80px" alt="" class="mb-2">
             </div>
-            <div class="flex flex-warp">
+            <div class="flex flex-warp justify-center">
                 <!-- Deskripsi footer -->
-                <div class="w-full px-4 mb-12 text-white md:w-1/4">
+                <div class="px-4 mb-12 text-white lg:w-1/3">
                     <h3 class="text-xl my-2 font-semibold">PT. Inti Maju Cemerlang</h3>
                     <p class="lg:text-justify">Perusahaan yang melayani reparasi mobil kuno ataupun mobil lawas yang ubah menjadi mobil jeep atau classic lainnya.</p>
                     <!-- Media Sosial -->
@@ -187,7 +275,7 @@
                     </div>
                 </div>
                 <!-- Tautan Footer -->
-                <div class="w-full px-4 mb-12 text-white md:w-1/4">
+                <div class="px-4 mb-12 text-white lg:w-1/3">
                     <h3 class="font-semibold text-xl my-2 opacity-90">Tautan kami</h3>
                     <ul>
                         <li class="mb-1"><a href="#" class="hover:text-primary inline-block transition duration-150 ease-in-out">Beranda</a></li>
@@ -198,8 +286,9 @@
                         <li class="mb-1"><a href="#" class="hover:text-primary inline-block transition duration-150 ease-in-out">Masuk</a></li>
                     </ul>
                 </div>
+                <br>
                 <!-- Bantuan Footer -->
-                <div class="w-full px-4 mb-12 text-white md:w-1/4">
+                <div class="px-4 mb-12 text-white lg:w-1/3">
                     <h3 class="font-semibold text-xl my-2 opacity-90">Bantuan</h3>
                     <ul>
                         <li class="mb-1"><a href="#" class="hover:text-primary inline-block transition duration-150 ease-in-out">FAQ</a></li>
@@ -208,14 +297,14 @@
                     </ul>
                 </div>
                 <!-- Tentang Kami Footer -->
-                <div class="w-full px-4 mb-12 text-white md:w-1/4">
-                    <h3 class="font-semibold text-xl my-2 opacity-90">Bantuan</h3>
+                <!-- <div class="sm:w-1/2 px-4 mb-12 text-white lg:w-1/4">
+                    <h3 class="font-semibold text-xl my-2 opacity-90">Tentang Kami</h3>
                     <ul>
                         <li class="mb-1"><a href="#" class="hover:text-primary inline-block transition duration-150 ease-in-out">Tentang Kami</a></li>
                         <li class="mb-1"><a href="#" class="hover:text-primary inline-block transition duration-150 ease-in-out">Artikel Kami</a></li>
                         <li class="mb-1"><a href="#" class="hover:text-primary inline-block transition duration-150 ease-in-out">Galeri Lengkap</a></li>
                     </ul>
-                </div>
+                </div> -->
             </div>
             <div class="w-full px-4 border-t pt-10 border-stone-700">
                 <p class="text-center text-white text-sm">&copy; <?php echo date("Y"); ?> PT INTI MAJU CEMERLANG</p>
@@ -225,5 +314,6 @@
 
     <!-- JS -->
     <script src="dist/js/navbar.js" type="text/javascript"></script>
+    <script src="dist/js/swipper.js" type="text/javascript"></script>
 </body>
 </html>
