@@ -19,5 +19,10 @@
   "homepage": "https://github.com/luthfionumsida/PT-IMC#readme",
   "devDependencies": {
     "tailwindcss": "^3.1.8"
+  },
+  "dependencies": {
+    "git": "^0.1.5",
+    "nodejs": "^0.0.0",
+    "yarn": "^1.22.19"
   }
 }
