@@ -49,14 +49,16 @@ if(isset($_SESSION['screen_width']) AND isset($_SESSION['screen_height'])){
         $w_reso = 560;
         $h_reso = 300;
     }
-} else {
-    $x=$_SERVER["REQUEST_URI"];    
-    $parsed = parse_url($x);
-    $undefined_variable = isset($parsed['query']);
-    if($undefined_variable != TRUE){
-        echo "<script>alert('Kami mendeteksi adanya kejanggalan pada peramban web Anda, membuat website tidak berjalan sempurna');alert('Gunakan peramban web yang mendukung Seperti Chrome, Mozilla, Edge, Safari dan lainnya');</script>";
-    }
-}
+} 
+
+//     else {
+//     $x=$_SERVER["REQUEST_URI"];    
+//     $parsed = parse_url($x);
+//     $undefined_variable = isset($parsed['query']);
+//     if($undefined_variable != TRUE){
+//         echo "<script>alert('Kami mendeteksi adanya kejanggalan pada peramban web Anda, membuat website tidak berjalan sempurna');alert('Gunakan peramban web yang mendukung Seperti Chrome, Mozilla, Edge, Safari dan lainnya');</script>";
+//     }
+// }
 
 
 
