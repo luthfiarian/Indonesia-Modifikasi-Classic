@@ -33,7 +33,7 @@ body{
 
 /* SVG */
 .svg-pertama{
-    @apply max-h-80 max-h-80 lg:w-[2000px] lg:h-[2000px] md:w-[800px] md:h-[800px];
+    @apply max-h-80 lg:w-[2000px] lg:h-[2000px] md:w-[800px] md:h-[800px];
 }
 
 /* Swipper */

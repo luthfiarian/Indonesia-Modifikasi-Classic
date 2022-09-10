@@ -64,7 +64,7 @@
                             Bergabung Bersama Kami <span class="block">Bangun Impianmu Sekarang</span>
                         </h1>
                         <p class="text-dark font-medium pt-5 mb-10 leading-relaxed uppercase">
-                            PT Inti Maju Cemerlang
+                            Indonesia Modifikasi Classic
                         </p>
                     </div>
                     <div class="w-full self-end px-4 lg:w-1/2">
