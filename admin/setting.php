@@ -33,7 +33,7 @@
                         <li class="group"><a href="clientdm.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Client</a></li>
                         <li class="group"><a href="user.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">User</a></li>
                         <li class="group"><a href="" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Setting</a></li>
-                        <li class="group"><a href="#" class="text-base font-semibold text-white rounded-xl py-2 px-10 mx-2 flex bg-red-500 hover:bg-red-700 group-hover:text-gray-200 transition duration-300 ease-in-out">Keluar</a></li>
+                        <li class="group"><a href="database/logout.php" class="text-base font-semibold text-white rounded-xl py-2 px-10 mx-2 flex bg-red-500 hover:bg-red-700 group-hover:text-gray-200 transition duration-300 ease-in-out">Keluar</a></li>
                     </ul>
                 </nav>
                 </div>
@@ -55,17 +55,17 @@
                     <table class="table table-auto mx-auto">
                         <tr class="">
                             <td class="px-20">Sunting Gambar Galeri</td>
-                            <td><a href="#" class="py-2 px-6 mx-auto mb-10 font-semibold bg-primary border-2 border-primary transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Edit</a></td>
+                            <td><a href="settingeg.php" class="py-2 px-6 mx-auto mb-10 font-semibold bg-primary border-2 border-primary transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Edit</a></td>
                         </tr>
                         <tr><td><br></td><td><br></td></tr>
                         <tr>
                             <td class="px-20">Sunting FAQ</td>
-                            <td><a href="#" class="py-2 px-6 mx-auto mb-10 font-semibold bg-primary border-2 border-primary transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Edit</a></td>
+                            <td><a href="settingef.php" class="py-2 px-6 mx-auto mb-10 font-semibold bg-primary border-2 border-primary transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Edit</a></td>
                         </tr>
                         <tr><td><br></td><td><br></td></tr>
                         <tr>
                             <td class="px-20">Sunting Sosial Media Web</td>
-                            <td><a href="#" class="py-2 px-6 mx-auto mb-10 font-semibold bg-primary border-2 border-primary transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Edit</a></td>
+                            <td><a href="settinges.php" class="py-2 px-6 mx-auto mb-10 font-semibold bg-primary border-2 border-primary transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Edit</a></td>
                         </tr>
                         <tr><td><br></td><td><br></td></tr>
                         <tr>

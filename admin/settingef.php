@@ -1,3 +1,7 @@
+<?php
+    include 'database/connectiondb.php'; include 'database/important.php';
+    include 'database/session_false.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,8 +36,8 @@
                         <li class="group"><a href="dashboard.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Dashboard</a></li>
                         <li class="group"><a href="clientdm.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Client</a></li>
                         <li class="group"><a href="user.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">User</a></li>
-                        <li class="group"><a href="" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Setting</a></li>
-                        <li class="group"><a href="#" class="text-base font-semibold text-white rounded-xl py-2 px-10 mx-2 flex bg-red-500 hover:bg-red-700 group-hover:text-gray-200 transition duration-300 ease-in-out">Keluar</a></li>
+                        <li class="group"><a href="setting.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Setting</a></li>
+                        <li class="group"><a href="database/logout.php" class="text-base font-semibold text-white rounded-xl py-2 px-10 mx-2 flex bg-red-500 hover:bg-red-700 group-hover:text-gray-200 transition duration-300 ease-in-out">Keluar</a></li>
                     </ul>
                 </nav>
                 </div>
@@ -64,29 +68,31 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php while($faq = mysqli_fetch_assoc($result_faq)){ ?>
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <td class="py-4 px-6 max-w-xs">Kalo aku ngechat kamu ada yang marah nggak? 🐊</td>
-                                    <td class="py-4 px-6 max-w-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae laborum veniam, voluptatem nesciunt voluptate, sint ex nemo dignissimos ea repellat ut consectetur consequatur excepturi accusantium error ullam libero nisi alias accusamus esse in! Molestias repudiandae vel modi nihil? Iste consequatur ad perspiciatis debitis totam excepturi adipisci voluptatum vero, sint dicta?</td>
-                                    <td class="py-4 px-6 text-center"><a href="#" class="font-medium text-red-600 dark:text-red-500 hover:opacity-80">Hapus</a></td>
+                                    <td class="py-4 px-6 max-w-xs"><?php echo $faq["pertanyaan"]; ?></td>
+                                    <td class="py-4 px-6 max-w-sm"><?php echo $faq["jawaban"]; ?></td>
+                                    <td class="py-4 px-6 text-center"><a href="database/delete.php?id_faq=<?php echo $faq["id_faq"] ?>" class="font-medium text-red-600 dark:text-red-500 hover:opacity-80">Hapus</a></td>
                                 </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
                     <!-- End Table -->
 
                     <!-- Tambah Gambar -->
-                    <form action="" method="post" class="mt-10">
+                    <form action="database/add.php" method="post" class="mt-10">
                         <h2 class="text-center text-lg font-semibold">Tambah Pertanyaan dan Jawaban</h2>
                         <div class="relative z-0 mb-6 w-full group">
-                            <input type="text" name="pertanyaan" id="pertanyaan" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " require="">
+                            <input type="text" name="pertanyaan" id="pertanyaan" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="">
                             <label for="pertanyaan" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Pertanyaan*</label>
                         </div>
                         <div class="relative z-0 mb-6 w-full group">
-                            <textarea name="jawaban" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="" cols="30" rows="2" placeholder=" " require=""></textarea>
+                            <textarea name="jawaban" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="" cols="30" rows="2" placeholder=" " required=""></textarea>
                             <label for="catatan" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Jawaban*</label>
                         </div>
                         <div class="w-full text-center mx-auto">
-                            <input value="Tambahkan" type="submit" class="py-2 px-6 font-semibold bg-primary border-2 border-primary transition duration-300 hover:shadow-lg hover:opacity-80 rounded-3xl ease-in-out">
+                            <input value="Tambahkan" name="tambah_faq" type="submit" class="py-2 px-6 font-semibold bg-primary border-2 border-primary transition duration-300 hover:shadow-lg hover:opacity-80 rounded-3xl ease-in-out">
                         </div>
                     </form>
                     <!-- End Tambah Gambar -->

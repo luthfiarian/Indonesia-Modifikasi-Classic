@@ -1,0 +1,1 @@
+<?php include '../admin/database/system_detail.php'; header("Location: ../index.php"); exit?>

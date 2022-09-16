@@ -1,3 +1,18 @@
+<?php 
+    include 'database/connectiondb.php'; include "database/important.php";
+    include 'database/session_false.php';
+    if(isset($_GET["id_cm"])){
+        $id_cm = $_GET["id_cm"];
+        echo "<script>window.print(); setTimeout(function(){ window.location.href = 'clientdm.php'; }, 5000);</script>";
+    } else if(!isset($_GET["id_cm"])){
+        header("Location: clientdm.php");
+        exit;
+    }
+    $query_pr = "SELECT * FROM client_mobil WHERE id_cm = '$id_cm'";
+    $result_pr = mysqli_query($koneksi, $query_pr);
+    $printm = mysqli_fetch_assoc($result_pr);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,62 +46,62 @@
                         <tr>
                             <td>Nama Pemilik</td>
                             <td class="px-20">:</td>
-                            <td>Gunawan</td>
+                            <td><?php echo $printm["cm_nama"]; ?></td>
                         </tr>
                         <tr>
                             <td>Ponsel</td>
                             <td class="px-20">:</td>
-                            <td>081-222-333-444</td>
+                            <td><?php echo $printm["cm_tel"]; ?></td>
                         </tr>
                         <tr>
                             <td>Alamat</td>
                             <td class="px-20">:</td>
-                            <td class="w-[300px] block">Jl. Mawar No.1, Ds. Gulawangi, Kec. Guntingan, Kab. Pasuruan</td>
+                            <td class="w-[300px] block"><?php echo $printm["cm_alamat"]; ?></td>
                         </tr>
                         <tr>
                             <td>Nomor Polisi</td>
                             <td class="px-20">:</td>
-                            <td>W 1233 LGX</td>
+                            <td><?php echo $printm["cm_nopol"]; ?></td>
                         </tr>
                         <tr>
                             <td>Nomor Rangka</td>
                             <td class="px-20">:</td>
-                            <td>4H5H323213325678</td>
+                            <td><?php echo $printm["cm_norangka"]; ?></td>
                         </tr>
                         <tr>
                             <td>Nomor Mesin</td>
                             <td class="px-20">:</td>
-                            <td>JB34JB32B4B444478</td>
+                            <td><?php echo $printm["cm_nomesin"]; ?></td>
                         </tr>
                         <tr>
                             <td>Tahun</td>
                             <td class="px-20">:</td>
-                            <td>2015</td>
+                            <td><?php echo $printm["cm_tahunmobil"]; ?></td>
                         </tr>
                         <tr>
                             <td>Jenis Mobil</td>
                             <td class="px-20">:</td>
-                            <td>Manual</td>
+                            <td><?php echo $printm["cm_jenismobil"]; ?></td>
                         </tr>
                         <tr>
                             <td>Catatan/Deskripsi</td>
                             <td class="px-20">:</td>
-                            <td class="w-[300px] block">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus sequi, aliquam in obcaecati deserunt rem!</td>
+                            <td class="w-[300px] block"><?php echo $printm["cm_catatan"]; ?></td>
                         </tr>
                         <tr>
                             <td>Progress</td>
                             <td class="px-20">:</td>
-                            <td>50%</td>
+                            <td><?php echo $printm["cm_progress"] . "%"; ?></td>
                         </tr>
                         <tr>
                             <td>Keterangan</td>
                             <td class="px-20">:</td>
-                            <td class="w-[300px] block">Pemasangan Lampu</td>
+                            <td class="w-[300px] block"><?php echo $printm["cm_keterangan"]; ?></td>
                         </tr>
                     </table>
                     <div class="mx-auto mt-10 mb-10 py-5 w-[50%] text-center border-4 border-green-400">
                         <h1 class="text-lg font-semibold">Kode Tracking</h1>
-                        <p class="text-4xl font-bold">XAS54D66</p>
+                        <p class="text-4xl font-bold"><?php echo $printm["cm_tracking"]; ?></p>
                     </div>
                 </div>
             </div>

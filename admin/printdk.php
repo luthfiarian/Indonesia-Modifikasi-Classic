@@ -1,3 +1,18 @@
+<?php 
+    include 'database/connectiondb.php'; include "database/important.php";
+    include 'database/session_false.php';
+    if(isset($_GET["id_ck"])){
+        $id_ck = $_GET["id_ck"];
+        echo "<script>window.print(); setTimeout(function(){ window.location.href = 'clientdk.php'; }, 5000);</script>";
+    } else if(!isset($_GET["id_ck"])){
+        header("Location: clientdk.php");
+        exit;
+    }
+    $query_pr = "SELECT * FROM client_kontruksi WHERE id_ck = '$id_ck'";
+    $result_pr = mysqli_query($koneksi, $query_pr);
+    $printk = mysqli_fetch_assoc($result_pr);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,42 +44,42 @@
                         <tr>
                             <td>Nama Pemilik</td>
                             <td class="px-20">:</td>
-                            <td>Gunawan</td>
+                            <td><?php echo $printk["ck_nama"]; ?></td>
                         </tr>
                         <tr>
                             <td>Ponsel</td>
                             <td class="px-20">:</td>
-                            <td>081-222-333-444</td>
+                            <td><?php echo $printk["ck_tel"]; ?></td>
                         </tr>
                         <tr>
                             <td>Alamat</td>
                             <td class="px-20">:</td>
-                            <td class="w-[300px] block">Jl. Mawar No.1, Ds. Gulawangi, Kec. Guntingan, Kab. Pasuruan</td>
+                            <td class="w-[300px] block"><?php echo $printk["ck_alamat"]; ?></td>
                         </tr>
                         <tr>
                             <td>Jenis</td>
                             <td class="px-20">:</td>
-                            <td>Container</td>
+                            <td><?php echo $printk["ck_jenis"]; ?></td>
                         </tr>
                         <tr>
                             <td>Catatan/Deskripsi</td>
                             <td class="px-20">:</td>
-                            <td class="w-[300px] block">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus sequi, aliquam in obcaecati deserunt rem!</td>
+                            <td class="w-[300px] block"><?php echo $printk["ck_catatan"]; ?></td>
                         </tr>
                         <tr>
                             <td>Progress</td>
                             <td class="px-20">:</td>
-                            <td>50%</td>
+                            <td><?php echo $printk["ck_progress"] . "%" ?></td>
                         </tr>
                         <tr>
                             <td>Keterangan</td>
                             <td class="px-20">:</td>
-                            <td class="w-[300px] block">Pemasangan dinabol</td>
+                            <td class="w-[300px] block"><?php echo $printk["ck_keterangan"]; ?>l</td>
                         </tr>
                     </table>
                     <div class="mx-auto mt-10 mb-10 py-5 w-[50%] text-center border-4 border-green-400">
                         <h1 class="text-lg font-semibold">Kode Tracking</h1>
-                        <p class="text-4xl font-bold">XAS54D66</p>
+                        <p class="text-4xl font-bold"><?php echo $printk["ck_tracking"]; ?></p>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,17 @@
+<?php include 'database/connectiondb.php'; include 'database/important.php'; include 'database/session_false.php';
+    $id_user = $_GET['id_admin'];
+    if($_SESSION['kategori'] == "Administrator"){
+        if($_SESSION['id'] != $id_user){
+            $id_user = $_SESSION['id'];
+            header("Location: usere.php?id_admin=".$id_user);
+        }
+    }else if($_SESSION['kategori'] == "Pengelola"){
+        if(!isset($id_user)){
+            $id_user = $_SESSION['id'];
+            header("Location: usere.php?id_admin=".$id_user);
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,8 +46,8 @@
                         <li class="group"><a href="dashboard.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Dashboard</a></li>
                         <li class="group"><a href="clientdm.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Client</a></li>
                         <li class="group"><a href="" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">User</a></li>
-                        <li class="group"><a href="#" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Setting</a></li>
-                        <li class="group"><a href="#" class="text-base font-semibold text-white rounded-xl py-2 px-10 mx-2 flex bg-red-500 hover:bg-red-700 group-hover:text-gray-200 transition duration-300 ease-in-out">Keluar</a></li>
+                        <li class="group"><a href="setting.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Setting</a></li>
+                        <li class="group"><a href="database/logout.php" class="text-base font-semibold text-white rounded-xl py-2 px-10 mx-2 flex bg-red-500 hover:bg-red-700 group-hover:text-gray-200 transition duration-300 ease-in-out">Keluar</a></li>
                     </ul>
                 </nav>
                 </div>
@@ -52,37 +66,45 @@
                         <hr class="w-16 mx-auto mt-2 mb-2 border-b-4 rounded-full border-primary">
                         <p class="text-sm mb-4 text-center">Formulir sunting pengguna admin </p>
                     </div>
-                    <form action="" method="post" class="">
+                    <?php  
+                        $query_edit = "SELECT * FROM user WHERE id_admin='$id_user'";
+                        $result_edit = mysqli_query($koneksi, $query_edit);
+                        $edit = mysqli_fetch_assoc($result_edit);
+                    ?>
+                    <form action="database/edit.php" method="post" class="">
                         <div class="grid md:grid-cols-2 md:gap-6">
                             <div class="relative z-0 mb-6 w-full group">
-                                <input type="text" name="nama" id="nama" class="block py-2.5 px-0 w-full font-semibold text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="">
+                                <input type="hidden" name="id" value="<?php echo $edit['id_admin'] ?>">
+                                <input type="text" name="nama" value="<?php echo $edit['nama_admin'] ?>" id="nama" class="block py-2.5 px-0 w-full font-semibold text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="">
                                 <label for="nama" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Panjang *</label>
                             </div>
                             <div class="relative z-0 mb-6 w-full group">
-                                <input type="tel" name="telepon" id="telepon" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{3}" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="">
+                                <input type="tel" name="telepon" value="<?php echo $edit['telepon'] ?>" id="telepon" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="">
                                 <label for="telepon" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nomor Ponsel (081-XXX-XXX-XXX) *</label>
                             </div>
                         </div>
                         <div class="relative z-0 mb-6 w-full group">
-                            <input type="text" name="username" id="username" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " require="">
+                            <input type="text" name="username" id="username" value="<?php echo $edit['username_admin'] ?>" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="">
                             <label for="username" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Username*</label>
                         </div>
+                        <?php if($_SESSION['kategori'] == "Administrator"){ ?>
+                            <div class="relative z-0 mb-6 w-full group">
+                                <input type="password" value="<?php echo NULL?>" name="password_lama" id="password_lama" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="">
+                                <label for="password_lama" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password Lama*</label>
+                            </div>
+                        <?php } ?>
                         <div class="relative z-0 mb-6 w-full group">
-                            <input type="password" name="password" id="password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " require="">
-                            <label for="password" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password Lama*</label>
+                            <input type="password" value="<?php echo NULL?>" name="password_baru" id="password_baru" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="">
+                            <label for="password_baru" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password Baru*</label>
                         </div>
                         <div class="relative z-0 mb-6 w-full group">
-                            <input type="password" name="password" id="password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " require="">
-                            <label for="password" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password Baru*</label>
-                        </div>
-                        <div class="relative z-0 mb-6 w-full group">
-                            <input type="text" name="catatan" id="catatan" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" ">
+                            <textarea name="catatan" id="catatan" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" rows="2"><?php echo $edit['catatan_admin'] ?></textarea>
                             <label for="catatan" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Catatan/Deskripsi</label>
                             <p class="text-sm text-red-500">(*) Wajib diisi untuk kelengkapan data</p>
-                            <p class="text-sm text-red-500">(*) Bilamana tidak ingin merubah password, maka password lama dan baru<br>tetap di isi dengan nilai yang sama</p>
+                            <p class="text-sm text-red-500">Catatan : Bilamana tidak ingin merubah password, maka password lama dan baru<br>tetap di isi dengan nilai yang sama</p>
                         </div>
                         <div class="w-full text-center mx-auto">
-                            <input value="Edit" type="submit" class="py-2 px-6 font-semibold mb-5 bg-primary border-2 border-primary transition duration-300 hover:shadow-lg hover:opacity-80 rounded-3xl ease-in-out">
+                            <input value="Edit" name="edit_user" type="submit" class="py-2 px-6 font-semibold mb-5 bg-primary border-2 border-primary transition duration-300 hover:shadow-lg hover:opacity-80 rounded-3xl ease-in-out">
                         </div>
                     </form>
                 </div>

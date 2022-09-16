@@ -1,0 +1,1 @@
+<?php include 'system_detail.php'; header("Location: ../dashboard.php"); exit?>
