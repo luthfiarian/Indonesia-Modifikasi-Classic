@@ -1,3 +1,16 @@
+<!--
+Magang Umsida Periode 2022 - Quartal Ke-9
+Author: PT INTI MAJU CEMERLANG
+Licensed to PT INTI MAJU CEMERLANG
+Thanks to :
+    > Iwan Setiawan - As The Owner Of The Company
+    > Adinata Setiawan - Project Supervisor
+Contributor & Credit: 
+    > Luthfi Arian Nugraha - Fullstack - Project Leader (University Advisor : Sukma Aji, S.T., S.Kom.)
+    > Yusuf Raharja - Frontend - Member Project (University Advisor : Novia Ariyanti, S.Si., M.Pd.)
+    > Reyhan Adi Saputra - Frontend - Member Project (University Advisor : Novia Ariyanti, S.Si., M.Pd.)
+    > Davito Rasendriya Rizqullah Putra - Wordpress - Member Project (University Advisor : Sukma Aji, S.T., S.Kom.)
+-->
 <?php
 include 'connectiondb.php'; include 'important.php';
 include 'system_detail.php';
@@ -159,5 +172,21 @@ echo "<html style='display: none';></html>";
         } else {
           echo "<script>alert('Gambar dihapus ✔');window.location='../settingeg.php';</script>";
         }
+  // Reset WEB LOG
+  }else if(isset($_GET["reset"])){
+    $reset = $_GET["reset"];
+    if($_SESSION["kategori"] == "Pengelola"){
+      $q_rl = "TRUNCATE TABLE web_log";
+      $r_rl = mysqli_query($koneksi, $q_rl);
+      if($reset = "G23fg4%df5yHR6hh45g@#@"){
+        if(!isset($r_rl)){
+          echo "<script>alert('Kesalahan Perintah Dalam Reset ❌');window.location='../setting.php';</script>";
+        }else{
+          echo "<script>alert('Hayooo Ngapain?😲');alert('Web Log Sudah Kehapus Kok 🤭');window.location='../setting.php';</script>";
+        }
+      }
+    }else{
+      echo "<script>alert('Server Tidak Menjangkau ❌');window.location='../dashboard.php';</script>";
+    }
   }
     ?>

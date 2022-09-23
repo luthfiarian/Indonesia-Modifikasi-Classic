@@ -1,10 +1,23 @@
+<!--
+Magang Umsida Periode 2022 - Quartal Ke-9
+Author: PT INTI MAJU CEMERLANG
+Licensed to PT INTI MAJU CEMERLANG
+Thanks to :
+    > Iwan Setiawan - As The Owner Of The Company
+    > Adinata Setiawan - Project Supervisor
+Contributor & Credit: 
+    > Luthfi Arian Nugraha - Fullstack - Project Leader (University Advisor : Sukma Aji, S.T., S.Kom.)
+    > Yusuf Raharja - Frontend - Member Project (University Advisor : Novia Ariyanti, S.Si., M.Pd.)
+    > Reyhan Adi Saputra - Frontend - Member Project (University Advisor : Novia Ariyanti, S.Si., M.Pd.)
+    > Davito Rasendriya Rizqullah Putra - Wordpress - Member Project (University Advisor : Sukma Aji, S.T., S.Kom.)
+-->
 <?php
     session_start(); 
     include 'system_detail.php';
         require 'connectiondb.php';
          if(isset($_POST["login"])){ //&& isset($_POST["remember_me"])){
             $username_a = strtolower(stripslashes($_POST["username"])); $pass_a = stripslashes($_POST["password"]);
-            $username_admin = mysqli_real_escape_string($koneksi,$username_a); $pass_admin = mysqli_real_escape_string($koneksi,$username_a);
+            $username_admin = mysqli_real_escape_string($koneksi,$username_a); $pass_admin = mysqli_real_escape_string($koneksi,$pass_a);
             $result_login = mysqli_query($koneksi, "SELECT * FROM user WHERE username_admin = '$username_admin'");
             function log_web($username_admin, $nama_admin, $koneksi){
                 $desc_log = $username_admin . " (" . $nama_admin . ") " . " login pada " . date('l, d-F-Y g:i a');
@@ -40,12 +53,12 @@
 
                     header("Location: ../dashboard.php"); exit;
                 } else {
-                    header("Location: ../../login.php");
+                    echo "<script>alert('Periksa Kembali Username atau Password Anda ❌');setTimeout(function(){ window.location.href = '../../login.php'; }, 250);</script>";
                 }
             } else {
-                header("Location: ../../login.php");
+                echo "<script>alert('Periksa Kembali Username atau Password Anda ❌');setTimeout(function(){ window.location.href = '../../login.php'; }, 250);</script>";
             }
         } else {
-            header("Location: ../../login.php");
+            echo "<script>alert('Server Tidak Menjangkau ❌');setTimeout(function(){ window.location.href = '../../login.php'; }, 250);</script>";
         }
     ?>

@@ -1,3 +1,16 @@
+<!--
+Magang Umsida Periode 2022 - Quartal Ke-9
+Author: PT INTI MAJU CEMERLANG
+Licensed to PT INTI MAJU CEMERLANG
+Thanks to :
+    > Iwan Setiawan - As The Owner Of The Company
+    > Adinata Setiawan - Project Supervisor
+Contributor & Credit: 
+    > Luthfi Arian Nugraha - Fullstack - Project Leader (University Advisor : Sukma Aji, S.T., S.Kom.)
+    > Yusuf Raharja - Frontend - Member Project (University Advisor : Novia Ariyanti, S.Si., M.Pd.)
+    > Reyhan Adi Saputra - Frontend - Member Project (University Advisor : Novia Ariyanti, S.Si., M.Pd.)
+    > Davito Rasendriya Rizqullah Putra - Wordpress - Member Project (University Advisor : Sukma Aji, S.T., S.Kom.)
+-->
 <?php 
     include 'database/connectiondb.php'; include 'database/important.php';
     include 'database/session_false.php';
@@ -12,6 +25,16 @@
     <link rel="shortcut icon" href="../dist/img/favicon-pt.ico" type="image/x-icon">
     <!-- CSS -->
     <link rel="stylesheet" href="../dist/output.css">
+    <style>
+    @media screen and (max-width: 640px) {
+      .crd-atas{
+        flex-direction: column;
+      }
+      .crd{
+        display: flex;
+      }
+    }
+  </style>
 </head>
 <body>
     <!-- Navbar Admin -->
@@ -32,7 +55,7 @@
                     </button>
                 <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
                     <ul class="block lg:flex">
-                        <li class="group"><a href="#" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Beranda</a></li>
+                        <li class="group"><a href="../index.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Beranda</a></li>
                         <li class="group"><a href="dashboard.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Dashboard</a></li>
                         <li class="group"><a href="" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Client</a></li>
                         <li class="group"><a href="user.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">User</a></li>
@@ -207,10 +230,10 @@
         <section id="button-changger" class="pt-4 pb-10">
             <div class="container">
                 <div class="w-full px-4">
-                    <div class="mx-auto text-center">
-                        <a href="clientm.php" class="py-2 px-6 mx-auto mb-10 font-semibold bg-primary border-2 border-primaryk transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Pemesanan Mobil</a>
-                        <a href="clientk.php" class="py-2 px-6 mx-auto mb-10 font-semibold bg-primary border-2 border-primary transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Pemesanan Kontruksi</a>
-                        <a href="" class="py-2 px-6 mx-auto mb-10 font-semibold text-white bg-dark border-2 border-dark transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Daftar Client</a>
+                    <div class="mx-auto crd-atas text-center">
+                        <a href="clientm.php" class="crd py-2 px-6 mx-auto mb-2 md:mb-10 font-semibold bg-primary border-2 border-primaryk transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Pemesanan Mobil</a>
+                        <a href="clientk.php" class="crd py-2 px-6 mx-auto mb-2 md:mb-10 font-semibold bg-primary border-2 border-primary transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Pemesanan Kontruksi</a>
+                        <a href="" class="crd py-2 px-6 mx-auto mb-2 md:mb-10 font-semibold text-white bg-dark border-2 border-dark transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Daftar Client</a>
                     </div>
                 </div>
             </div>

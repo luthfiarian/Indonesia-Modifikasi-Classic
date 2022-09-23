@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Sep 2022 pada 18.52
+-- Waktu pembuatan: 23 Sep 2022 pada 13.47
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -29,9 +29,8 @@ USE `imc`;
 -- Struktur dari tabel `client_kontruksi`
 --
 
-DROP TABLE IF EXISTS `client_kontruksi`;
 CREATE TABLE `client_kontruksi` (
-  `id_ck` int(11) NOT NULL COMMENT 'Id Client Kontruksi',
+  `id_ck` int(11) NOT NULL,
   `ck_tipe` varchar(255) NOT NULL COMMENT 'Tipe Client Kontruksi (Baru/Pengerjaan/Pending)',
   `ck_nama` varchar(255) NOT NULL COMMENT 'Nama Pemilik (Pemesan/Client)',
   `ck_tel` varchar(255) NOT NULL COMMENT 'Nomor Ponsel Client',
@@ -53,9 +52,8 @@ CREATE TABLE `client_kontruksi` (
 -- Struktur dari tabel `client_mobil`
 --
 
-DROP TABLE IF EXISTS `client_mobil`;
 CREATE TABLE `client_mobil` (
-  `id_cm` int(11) NOT NULL COMMENT 'Id Client Mobil',
+  `id_cm` int(11) NOT NULL,
   `cm_tipe` varchar(255) NOT NULL COMMENT 'Tipe Client Mobil (Baru/Pengerjaan/Pending)',
   `cm_nama` varchar(255) NOT NULL COMMENT 'Nama Pemilik (Pemesan/Client)',
   `cm_tel` varchar(255) NOT NULL COMMENT 'Nomor Ponsel Client',
@@ -82,14 +80,13 @@ CREATE TABLE `client_mobil` (
 -- Struktur dari tabel `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id_admin` int(11) NOT NULL COMMENT 'ID Admin',
+  `id_admin` int(11) NOT NULL,
   `kategori` varchar(255) NOT NULL COMMENT 'Kategori Admin (1.Pengelola(ALL) 2.Administrator(NOT-ALL))',
   `nama_admin` varchar(255) NOT NULL COMMENT 'Nama Admin',
   `telepon` varchar(255) NOT NULL COMMENT 'Nomor Ponsel Admin',
   `username_admin` varchar(255) NOT NULL COMMENT 'Nama Pengguna Admin',
-  `pass_admin` varchar(255) NOT NULL COMMENT 'Password Admin',
+  `pass_admin` text NOT NULL COMMENT 'Password Admin',
   `catatan_admin` text NOT NULL COMMENT 'Catatan Admin',
   `log_user` varchar(255) NOT NULL COMMENT 'Rekam Jejak Log-in Admin'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -99,31 +96,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_admin`, `kategori`, `nama_admin`, `telepon`, `username_admin`, `pass_admin`, `catatan_admin`, `log_user`) VALUES
-(1, 'Administrator', 'Admin', '081-112-233-344', 'admin', '$2y$10$EgVxDEF6zta5SRZ/56I2JeLq4gicEmxCDhQtmezVDqUyUNEmO85uG', 'Administrator', ''),
-(2, 'Pengelola', 'Pengelola', '111-111-222-222', 'pengelola', '$2y$10$K7X9Wa4CAxNAF0Tmq48PL.JKeQEUmGQkwkjzB8OsHS4488yIkOXea', 'Pengelola', '');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `website`
---
-
-DROP TABLE IF EXISTS `website`;
-CREATE TABLE `website` (
-  `id_web` int(11) NOT NULL,
-  `judul1` varchar(50) NOT NULL COMMENT 'Singkatan Nama Perusahaan',
-  `judul2` varchar(255) NOT NULL COMMENT 'Nama Panjang Perusahaan',
-  `keyword_meta` varchar(255) NOT NULL COMMENT 'Kata Kunci Search Engine (Google)',
-  `deskripsi_meta` varchar(255) NOT NULL COMMENT 'Deskriptif Perusahaan di Search Engine (Google)',
-  `deskripsi_profil` varchar(255) NOT NULL COMMENT 'Deskripsi Tentang Perusahaan Profil dan Footer'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `website`
---
-
-INSERT INTO `website` (`id_web`, `judul1`, `judul2`, `keyword_meta`, `deskripsi_meta`, `deskripsi_profil`) VALUES
-(1, 'IMC', 'Indonesia Modifikasi Classic', '', '', '');
+(2, 'Pengelola', 'Pengelola', '111-111-222-222', 'pengelola', '$2y$10$K7X9Wa4CAxNAF0Tmq48PL.JKeQEUmGQkwkjzB8OsHS4488yIkOXea', 'Pengelola', ''),
+(8, 'Administrator', 'Admin', 'admin', 'admin', '$2y$10$3O9V7QQP4gH1tIRraIpq0OmfbR5f5UYngoDRl0LWEl0pJMeVHznxW', 'Administrasi', '');
 
 -- --------------------------------------------------------
 
@@ -131,7 +105,6 @@ INSERT INTO `website` (`id_web`, `judul1`, `judul2`, `keyword_meta`, `deskripsi_
 -- Struktur dari tabel `web_faq`
 --
 
-DROP TABLE IF EXISTS `web_faq`;
 CREATE TABLE `web_faq` (
   `id_faq` int(11) NOT NULL,
   `pertanyaan` varchar(255) NOT NULL,
@@ -144,7 +117,6 @@ CREATE TABLE `web_faq` (
 -- Struktur dari tabel `web_galeri`
 --
 
-DROP TABLE IF EXISTS `web_galeri`;
 CREATE TABLE `web_galeri` (
   `id_galeri` int(11) NOT NULL,
   `caption` varchar(255) NOT NULL,
@@ -157,7 +129,6 @@ CREATE TABLE `web_galeri` (
 -- Struktur dari tabel `web_log`
 --
 
-DROP TABLE IF EXISTS `web_log`;
 CREATE TABLE `web_log` (
   `id_log` int(11) NOT NULL,
   `des_log` text NOT NULL
@@ -169,7 +140,6 @@ CREATE TABLE `web_log` (
 -- Struktur dari tabel `web_smedia`
 --
 
-DROP TABLE IF EXISTS `web_smedia`;
 CREATE TABLE `web_smedia` (
   `id_smedia` int(11) NOT NULL,
   `facebook` varchar(255) NOT NULL,
@@ -184,7 +154,7 @@ CREATE TABLE `web_smedia` (
 --
 
 INSERT INTO `web_smedia` (`id_smedia`, `facebook`, `instagram`, `youtube`, `whatsapp`, `email`) VALUES
-(1, 'd', 'c', 'e', 'a', 'b');
+(1, 'https://www.facebook.com/indonesiamodifikasiclassic', 'https://instagram.com/indonesiamodifikasiclassic27', 'https://www.youtube.com/channel/UCcj73EJtBRPSWDX8V96XlpA', 'https://wa.me/6281331739037', '');
 
 --
 -- Indexes for dumped tables
@@ -207,12 +177,6 @@ ALTER TABLE `client_mobil`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_admin`);
-
---
--- Indeks untuk tabel `website`
---
-ALTER TABLE `website`
-  ADD PRIMARY KEY (`id_web`);
 
 --
 -- Indeks untuk tabel `web_faq`
@@ -259,12 +223,6 @@ ALTER TABLE `client_mobil`
 --
 ALTER TABLE `user`
   MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `website`
---
-ALTER TABLE `website`
-  MODIFY `id_web` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT untuk tabel `web_faq`

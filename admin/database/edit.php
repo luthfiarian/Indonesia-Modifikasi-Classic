@@ -1,3 +1,16 @@
+<!--
+Magang Umsida Periode 2022 - Quartal Ke-9
+Author: PT INTI MAJU CEMERLANG
+Licensed to PT INTI MAJU CEMERLANG
+Thanks to :
+    > Iwan Setiawan - As The Owner Of The Company
+    > Adinata Setiawan - Project Supervisor
+Contributor & Credit: 
+    > Luthfi Arian Nugraha - Fullstack - Project Leader (University Advisor : Sukma Aji, S.T., S.Kom.)
+    > Yusuf Raharja - Frontend - Member Project (University Advisor : Novia Ariyanti, S.Si., M.Pd.)
+    > Reyhan Adi Saputra - Frontend - Member Project (University Advisor : Novia Ariyanti, S.Si., M.Pd.)
+    > Davito Rasendriya Rizqullah Putra - Wordpress - Member Project (University Advisor : Sukma Aji, S.T., S.Kom.)
+-->
 <?php
     include 'important.php'; include 'session_false.php'; include 'system_detail.php';
     $usr_session = $_SESSION['username'];
@@ -78,7 +91,7 @@
                     $password_baru = mysqli_real_escape_string($koneksi,$password_b); // Protection SQL Injection
                     $pass_encrypt = password_hash($password_baru, PASSWORD_DEFAULT); // Password Hash PHP
                     
-                    $pengelola_edit = "UPDATE user SET id_admin='$id_admin', nama_admin='$nama_admin', telepon='$telepon', username_admin='$username_admin', catatan_admin='$catatan_admin', pass_admin='$pass_encrypt' WHERE id_admin = $id_admin";
+                    $pengelola_edit = "UPDATE user SET nama_admin='$nama_admin', telepon='$telepon', username_admin='$username_admin', catatan_admin='$catatan_admin', pass_admin='$pass_encrypt' WHERE id_admin = '$id_admin'";
                     $result_pengelola = mysqli_query($koneksi, $pengelola_edit);
     
                     if(!$result_pengelola){
@@ -102,7 +115,7 @@
                     $pass_encrypt = password_hash($password_baru, PASSWORD_DEFAULT); // Password Hash PHP
     
                     if(password_verify($password_lama, $data_edit["pass_admin"])){
-                        $administrator_edit = "UPDATE user SET id_admin='$id_admin', nama_admin='$nama_admin', telepon='$telepon', username_admin='$username_admin', catatan_admin='$catatan_admin', pass_admin='$pass_encrypt' WHERE id_admin = $id_admin";
+                        $administrator_edit = "UPDATE user SET nama_admin='$nama_admin', telepon='$telepon', username_admin='$username_admin', catatan_admin='$catatan_admin', pass_admin='$pass_encrypt' WHERE id_admin = '$id_admin'";
                         $result_administrator = mysqli_query($koneksi, $administrator_edit);
                         
                         if(!$result_administrator){

@@ -1,11 +1,6 @@
 <?php
     session_start();
     include 'connectiondb.php';
-
-    //Connect Website
-    $query_website       = "SELECT * FROM website";
-    $result_website     = mysqli_query($koneksi, $query_website);
-
     //Connect User
     $query_user         = "SELECT * FROM user";
     $result_user        = mysqli_query($koneksi, $query_user);
@@ -21,6 +16,7 @@
     //Connect Sosial Media
     $query_sm           = "SELECT * FROM web_smedia";
     $result_sm          = mysqli_query($koneksi, $query_sm);
+    $smedia             = mysqli_fetch_assoc($result_sm);
 
     //Connect Log Web
     $query_log           = "SELECT * FROM web_log";

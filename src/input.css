@@ -41,3 +41,25 @@ body{
     width: 100%;
     height: 451px;
   }
+
+  /* Version Page */
+  .version{
+    animation: changeBg 10s infinite alternate linear;
+  }
+  @keyframes changeBg{
+    0% {
+        background: #65a30d;
+    }
+    25%{
+        background: #14b8a6;
+    }
+    50%{
+        background: #6366f1;
+    }
+    75%{
+        background: #ec4899;
+    }
+    100%{
+        background: #facc15;
+    }
+  }
