@@ -57,7 +57,7 @@ $smedia = mysqli_fetch_assoc($result_sm);
     <!-- Meta -->
     <meta name="author" content="PT. INTI MAJU CEMERLANG">
     <meta name="title" content="Beranda | IMC">
-    <meta name="description" content="Perusahaan reparasi mobil kuno yang mengubahnya menjadi mobil jeep classic dan modern sehingga mobil memiliki citra yang tinggi.">
+    <meta name="description" content="Bengkel reparasi mobil kuno yang mengubahnya menjadi mobil classic sehingga menciptakan mobil yang memiliki citra tinggi.">
     <meta name="keywords" content="PT Inti Maju Cemerlang, IMC, imc, Indonesia Modifikasi Classic, Mobil Classic, Mobil Kuno, Bengkel Pak Iwan, Sidoarjo, Taman, Pergudangan Taman">
 
     <!-- CSS -->
@@ -88,8 +88,8 @@ $smedia = mysqli_fetch_assoc($result_sm);
                     </button>
                     <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
                         <ul class="block lg:flex">
-                            <li class="group"><a href="index.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Beranda</a></li>
-                            <li class="group"><a href="profil.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Profil</a></li>
+                            <li class="group"><a href="index.php?index=TRUE" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Beranda</a></li>
+                            <li class="group"><a href="profil.php?profil=TRUE" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Profil</a></li>
                             <li class="group"><a href="galeri.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Galeri</a></li>
                             <li class="group"><a href="tracking.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Tracking</a></li>
                             <li class="group"><a href="kontak.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Kontak</a></li>
@@ -149,7 +149,7 @@ $smedia = mysqli_fetch_assoc($result_sm);
                 <div class="w-full px-4 flex flex-wrap justify-center">
                     <div class="mb-12 p-4 lg:w-1/2">
                         <h2 class="font-semibold  text-4xl lg:text-6xl mb-2">Kami adalah</h2>
-                        <p class="font-medium">Perusahaan reparasi mobil kuno yang mengubahnya menjadi mobil jeep classic dan modern sehingga mobil memiliki citra yang tinggi.</p>
+                        <p class="font-medium">Bengkel reparasi mobil kuno yang mengubahnya menjadi mobil classic sehingga menciptakan mobil yang memiliki citra tinggi.</p>
                         <a href="profil.php">
                             <span class="font-medium text-dark">Selengkapnya ></span>
                         </a>
@@ -381,8 +381,8 @@ $smedia = mysqli_fetch_assoc($result_sm);
                 <div class="px-4 mb-12 text-white lg:w-1/3">
                     <h3 class="font-semibold text-xl my-2 opacity-90">Tautan kami</h3>
                     <ul>
-                        <li class="mb-1"><a href="index.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Beranda</a></li>
-                        <li class="mb-1"><a href="profil.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Profil</a></li>
+                        <li class="mb-1"><a href="index.php?index=TRUE" class="hover:text-primary inline-block transition duration-150 ease-in-out">Beranda</a></li>
+                        <li class="mb-1"><a href="profil.php?profil=TRUE" class="hover:text-primary inline-block transition duration-150 ease-in-out">Profil</a></li>
                         <li class="mb-1"><a href="galeri.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Galeri</a></li>
                         <li class="mb-1"><a href="tracking.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Tracking</a></li>
                         <li class="mb-1"><a href="kontak.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Kontak</a></li>
@@ -396,7 +396,7 @@ $smedia = mysqli_fetch_assoc($result_sm);
                     <ul>
                         <li class="mb-1"><a href="faq.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">FAQ</a></li>
                         <li class="mb-1"><a href="layanan.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Layanan Kami</a></li>
-                        <li class="mb-1"><a href="lokasi.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Lokasi</a></li>
+                        <li class="mb-1"><a href="lokasi.php?lokasi=TRUE" class="hover:text-primary inline-block transition duration-150 ease-in-out">Lokasi</a></li>
                     </ul>
                 </div>
                 <!-- Tentang Kami Footer -->

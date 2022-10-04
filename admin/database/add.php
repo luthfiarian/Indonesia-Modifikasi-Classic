@@ -206,6 +206,8 @@ Contributor & Credit:
                 log_web_faq($usr_session, $nm_session);
                 echo "<script>alert('Data berhasil ditambah ✔');window.location='../settingef.php';</script>";
             }
+        }else{
+            echo "<script>alert('Sedang terjadi kesalahan, silahkan coba lagi ❌'); window.location='../dashboard.php';</script>";
         }
     }else if(isset($_POST["tambah_gambar"])){
         $caption = $_POST["caption"];
@@ -245,8 +247,14 @@ Contributor & Credit:
                 }else{
                     echo "<script>alert('Size file melebihi ketentuan (500KB) 😣');window.location='../settingeg.php';</script>";
                 }
+            }else{
+                echo "<script>alert('Sedang terjadi kesalahan, silahkan coba lagi ❌'); window.location='../dashboard.php';</script>";
             }
+        }else{
+            echo "<script>alert('Sedang terjadi kesalahan, silahkan coba lagi ❌'); window.location='../dashboard.php';</script>";
         }
+    }else{
+        echo "<script>alert('Sedang terjadi kesalahan, silahkan coba lagi ❌'); window.location='../dashboard.php';</script>";
     }
 
 ?>

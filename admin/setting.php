@@ -101,6 +101,18 @@ include 'database/session_false.php';
                             <td><a href="database/rekapu.php" class="mr-auto md:mr-0 py-2 px-6 mx-auto mb-10 font-semibold bg-primary border-2 border-primary transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Unduh</a></td>
                         </tr>
                         <tr><td><br></td><td><br></td></tr>
+                        <?php if($_SESSION["kategori"] == "Administrator"){ ?>
+                        <tr>
+                            <td class="px-20">Dokumentasi Penggunaan (Admin)</td>
+                            <td><a href="../docs/Admin_DOKUMENTASI PENGGUNAAN WEBSITE INDONESIA MODIFIKASI CLASSIC.pdf" class="mr-auto md:mr-0 py-2 px-6 mx-auto mb-10 font-semibold bg-primary border-2 border-primary transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Unduh</a></td>
+                        </tr>
+                        <?php }else if($_SESSION["kategori"] == "Pengelola"){ ?>
+                        <tr>
+                            <td class="px-20">Dokumentasi Penggunaan (Pengelola)</td>
+                            <td><a href="../docs/Pengelola_DOKUMENTASI PENGGUNAAN WEBSITE INDONESIA MODIFIKASI CLASSIC.pdf" class="mr-auto md:mr-0 py-2 px-6 mx-auto mb-10 font-semibold bg-primary border-2 border-primary transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Unduh</a></td>
+                        </tr>
+                        <?php } ?>
+                        <tr><td><br></td><td><br></td></tr>
                         <tr>
                             <td class="px-20">Credit Website</td>
                             <td><a href="version.php" class="mr-auto md:mr-0 py-2 px-6 mx-auto mb-10 font-semibold bg-primary border-2 border-primary transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Lihat</a></td>
@@ -112,12 +124,28 @@ include 'database/session_false.php';
                         <tr><td><br></td><td><br></td></tr>
                         <?php if($_SESSION["kategori"] == "Pengelola"){ ?>
                         <tr>
-                            <td colspan="2" class="text-lg font-semibold text-center">Log</td>
+                            <td colspan="2" class="text-lg font-semibold text-center">Zona Pengelola <br>Log</td>
                         </tr>
                         <tr><td><br></td><td><br></td></tr>
                         <tr>
                             <td><a href="log.php" class="py-2 px-6 mx-auto mb-10 font-semibold bg-primary border-2 border-primary transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Lihat</a></td>
-                            <td><a href="database/delete.php?reset=G23fg4%df5yHR6hh45g@#@" class="py-2 px-6 mx-auto mb-10 font-semibold text-white bg-red-500 border-2 border-red-500 transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Reset</a></td>
+                            <td><a href="database/reset.php?reset=G23fg4%df5yHR6hh45g@#@" class="py-2 px-6 mx-auto mb-10 font-semibold text-white bg-red-500 border-2 border-red-500 transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Reset</a></td>
+                        </tr>
+                        <tr><td><br></td><td><br></td></tr>
+                        <tr>
+                            <td colspan="2" class="text-lg font-semibold text-center">Data Client Mobil</td>
+                        </tr>
+                        <tr><td><br></td><td><br></td></tr>
+                        <tr>
+                            <td colspan="2" class="text-center"><a href="database/reset.php?clientm=G23fg4%df5FTHF6455g%##&*" class="py-2 px-6 mx-auto mb-10 font-semibold text-white bg-red-500 border-2 border-red-500 transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Reset</a></td>
+                        </tr>
+                        <tr><td><br></td><td><br></td></tr>
+                        <tr>
+                            <td colspan="2" class="text-lg font-semibold text-center">Data Client Kontruksi</td>
+                        </tr>
+                        <tr><td><br></td><td><br></td></tr>
+                        <tr>
+                            <td colspan="2" class="text-center"><a href="database/reset.php?clientk=G23fg4%df&*%^bgft5" class="py-2 px-6 mx-auto mb-10 font-semibold text-white bg-red-500 border-2 border-red-500 transition duration-300 hover:shadow-2xl hover:opacity-80 rounded-3xl ease-in-out">Reset</a></td>
                         </tr>
                         <?php } ?>
                     </table>

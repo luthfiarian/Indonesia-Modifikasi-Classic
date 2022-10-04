@@ -61,8 +61,8 @@ include 'admin/database/important.php';
                     </button>
                     <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
                         <ul class="block lg:flex">
-                            <li class="group"><a href="index.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Beranda</a></li>
-                            <li class="group"><a href="profil.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Profil</a></li>
+                            <li class="group"><a href="index.php?index=TRUE" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Beranda</a></li>
+                            <li class="group"><a href="profil.php?profil=TRUE" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Profil</a></li>
                             <li class="group"><a href="galeri.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Galeri</a></li>
                             <li class="group"><a href="tracking.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Tracking</a></li>
                             <li class="group"><a href="kontak.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Kontak</a></li>
@@ -230,8 +230,8 @@ include 'admin/database/important.php';
                 <div class="px-4 mb-12 text-white lg:w-1/3">
                     <h3 class="font-semibold text-xl my-2 opacity-90">Tautan kami</h3>
                     <ul>
-                        <li class="mb-1"><a href="index.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Beranda</a></li>
-                        <li class="mb-1"><a href="profil.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Profil</a></li>
+                        <li class="mb-1"><a href="index.php?index=TRUE" class="hover:text-primary inline-block transition duration-150 ease-in-out">Beranda</a></li>
+                        <li class="mb-1"><a href="profil.php?profil=TRUE" class="hover:text-primary inline-block transition duration-150 ease-in-out">Profil</a></li>
                         <li class="mb-1"><a href="galeri.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Galeri</a></li>
                         <li class="mb-1"><a href="tracking.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Tracking</a></li>
                         <li class="mb-1"><a href="kontak.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Kontak</a></li>
@@ -245,7 +245,7 @@ include 'admin/database/important.php';
                     <ul>
                         <li class="mb-1"><a href="faq.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">FAQ</a></li>
                         <li class="mb-1"><a href="layanan.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Layanan Kami</a></li>
-                        <li class="mb-1"><a href="lokasi.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Lokasi</a></li>
+                        <li class="mb-1"><a href="lokasi.php?lokasi=TRUE" class="hover:text-primary inline-block transition duration-150 ease-in-out">Lokasi</a></li>
                     </ul>
                 </div>
                 <!-- Tentang Kami Footer -->

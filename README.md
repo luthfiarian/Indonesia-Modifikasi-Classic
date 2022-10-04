@@ -92,6 +92,8 @@ Aplikasi Website ini telah dilisensikan oleh PT Inti Maju Cemerlang (Indonesia M
 
 - Dapat merekap data pelanggan dan user (admin) berformat excel
 
+- Rekam jejak, dapat mempermudah audit sistem
+
   
 
 ## Teknologi
@@ -106,13 +108,21 @@ Teknologi yang digunakan pada pembuatan Aplikasi Website:
 
   
 
-### Versi Aplikasi Website V1.0
+### Versi Aplikasi Website V1.1
 
-  
+- Versi sebelumnya V1.0 : [MediaFire](https://www.mediafire.com/file/t6a5d5rnjjxxkwv/Indonesia-Modifikasi-Classic-main_V1.0.zip/file) | [MEGA](https://mega.nz/file/2YQVlCTB#d_lxetmukLEAKBXdwts29bAn5rv-lv3jzSmwy5m3H4s)
+
+## Log
+- Bug Tracking, dan Edit Mobil
+- Penyesuain Reset Web Log, dan Deskripsi Web
+- Penambahan Dokumentasi
+- Penambahan Fitur Reset Data Client dan Kontruksi (Untuk pengelola)
+
 
 ## Instalasi Website
 
-Dibutuhkan [Node.js](https://nodejs.org/) v10+ untuk menjalankan Tailwindcss.
+- Dibutuhkan Webserver [Xammp](https://www.apachefriends.org/) | [Nginx](https://www.nginx.com/)
+- Dibutuhkan [Node.js](https://nodejs.org/) v10+ untuk menjalankan Tailwindcss.
 
 ```sh
 

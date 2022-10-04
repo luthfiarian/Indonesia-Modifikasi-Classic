@@ -3,7 +3,13 @@
     include 'admin/database/system_detail.php';
     session_start();
 if (isset($_SESSION['screen_width']) and isset($_SESSION['screen_height'])) {
-    echo "<script>history.back();</script>";
+    if(isset($_GET["lokasi"])){
+        echo "<script>window.location='lokasi.php';</script>";
+    }else if(isset($_GET["profil"])){
+        echo "<script>window.location='profil.php';</script>";
+    }else{
+        echo "<script>window.location='index.php';</script>";
+    }
 } else if (isset($_GET['width']) and isset($_GET['height'])) {
     $_SESSION['screen_width'] = $_GET['width'];
     $_SESSION['screen_height'] = $_GET['height'];

@@ -172,21 +172,7 @@ echo "<html style='display: none';></html>";
         } else {
           echo "<script>alert('Gambar dihapus ✔');window.location='../settingeg.php';</script>";
         }
-  // Reset WEB LOG
-  }else if(isset($_GET["reset"])){
-    $reset = $_GET["reset"];
-    if($_SESSION["kategori"] == "Pengelola"){
-      $q_rl = "TRUNCATE TABLE web_log";
-      $r_rl = mysqli_query($koneksi, $q_rl);
-      if($reset = "G23fg4%df5yHR6hh45g@#@"){
-        if(!isset($r_rl)){
-          echo "<script>alert('Kesalahan Perintah Dalam Reset ❌');window.location='../setting.php';</script>";
-        }else{
-          echo "<script>alert('Hayooo Ngapain?😲');alert('Web Log Sudah Kehapus Kok 🤭');window.location='../setting.php';</script>";
-        }
-      }
-    }else{
-      echo "<script>alert('Server Tidak Menjangkau ❌');window.location='../dashboard.php';</script>";
-    }
+  }else {
+    echo "<script>alert('Server tidak menanggapi ❌');window.location='../dashboard.php';</script>";
   }
     ?>

@@ -15,7 +15,7 @@ Contributor & Credit:
 include 'admin/database/important.php'; 
     // Responsive iframe
     if(!isset($_SESSION["screen_width"])){
-        header("Location: responsive.php");
+        header("Location: responsive.php?lokasi=TRUE");
     }else{
         $width_reso = $_SESSION["screen_width"];
         if($width_reso <= 486){
@@ -86,8 +86,8 @@ include 'admin/database/important.php';
                     </button>
                     <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
                         <ul class="block lg:flex">
-                            <li class="group"><a href="index.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Beranda</a></li>
-                            <li class="group"><a href="profil.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Profil</a></li>
+                            <li class="group"><a href="index.php?index=TRUE" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Beranda</a></li>
+                            <li class="group"><a href="profil.php?profil=TRUE" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Profil</a></li>
                             <li class="group"><a href="galeri.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Galeri</a></li>
                             <li class="group"><a href="tracking.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Tracking</a></li>
                             <li class="group"><a href="kontak.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Kontak</a></li>
@@ -110,7 +110,7 @@ include 'admin/database/important.php';
                 <div class="w-full px-4 flex flex-wrap  justify-center mb-2">
 
                     <div class="mb-8 p-4 lg:w-1/2">
-                        <h2 class="font-semibold  text-4xl lg:text-3xl mb-2">Gudang Indonesia Modifikasi Classic </h2>
+                        <h2 class="font-semibold  text-4xl lg:text-3xl mb-2">Kantor & Gudang Indonesia Modifikasi Classic </h2>
                         <p>Gudang Utama dan Bengkel Indonesia Modifikasi Classic yang berlokasi di Taman Sidoarjo Jawa Timur</p>
                     </div>
                     <div class="mb-10 p-4 lg:w-1/2">
@@ -120,24 +120,7 @@ include 'admin/database/important.php';
                 </div>
             </div>
         </section>
-        <section class="bg-gray-200 pt-5 pb-20" id="beranda">
-            <div class="container">
-
-                <div class="w-full ">
-                    <div class="w-full px-4 flex flex-wrap justify-center">
-
-                        <div class="mb-3 lg:w-1/2">
-                            <iframe class="rounded-lg shadow-2xl" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.6535688285803!2d112.65488391498813!3d-7.9312033811764895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6299a9328cfa7%3A0xf368544dd7a3fa0!2sInti%20Maju%20Cemerlang!5e0!3m2!1sid!2sid!4v1663209550473!5m2!1sid!2sid" width="<?php echo $w_reso ?>" height="<?php echo $h_reso ?>" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                        <div class="mb-5 p-4 lg:w-1/2">
-
-                            <h2 class="font-semibold  text-4xl lg:text-3xl mb-2">Kantor Indonesia Modifikasi Classic</h2>
-                            <p>Kantor utama Indonesia Modifikasi Classic yang berlokasi di Malang Jawa Timur</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    
 
         <!-- End In Progress Customer Section -->
     </content>
@@ -257,8 +240,8 @@ include 'admin/database/important.php';
                 <div class="px-4 mb-12 text-white lg:w-1/3">
                     <h3 class="font-semibold text-xl my-2 opacity-90">Tautan kami</h3>
                     <ul>
-                        <li class="mb-1"><a href="index.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Beranda</a></li>
-                        <li class="mb-1"><a href="profil.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Profil</a></li>
+                        <li class="mb-1"><a href="index.php?index=TRUE" class="hover:text-primary inline-block transition duration-150 ease-in-out">Beranda</a></li>
+                        <li class="mb-1"><a href="profil.php?profil=TRUE" class="hover:text-primary inline-block transition duration-150 ease-in-out">Profil</a></li>
                         <li class="mb-1"><a href="galeri.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Galeri</a></li>
                         <li class="mb-1"><a href="tracking.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Tracking</a></li>
                         <li class="mb-1"><a href="kontak.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Kontak</a></li>
@@ -272,7 +255,7 @@ include 'admin/database/important.php';
                     <ul>
                         <li class="mb-1"><a href="faq.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">FAQ</a></li>
                         <li class="mb-1"><a href="layanan.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Layanan Kami</a></li>
-                        <li class="mb-1"><a href="lokasi.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Lokasi</a></li>
+                        <li class="mb-1"><a href="lokasi.php?lokasi=TRUE" class="hover:text-primary inline-block transition duration-150 ease-in-out">Lokasi</a></li>
                     </ul>
                 </div>
                 <!-- Tentang Kami Footer -->

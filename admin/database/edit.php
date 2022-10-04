@@ -141,9 +141,9 @@ Contributor & Credit:
         // Edit Client Mobil
     }else if(isset($_POST["edit_cm"])){ $id_cm = $_POST['id'];
         $cm_tipe = $_POST["jenis_progress"]; $cm_namamobil = $_POST["nama_mobil"];   $cm_jenismobil = $_POST["jenis_kendaraan"];
-        $cm_nama = $_POST["nama"];           $cm_nopol = $_POST["nopol_mobil"];      $cm_catatan = $_POST["catatan"];
-        $cm_tel = $_POST["telepon"];         $cm_norangka = $_POST["nomor_rangka"];  $cm_progress = $_POST["progress"];
-        $cm_alamat = $_POST["alamat"];       $cm_nomesin = $_POST["nomor_mesin"];    $cm_keterangan = $_POST["keterangan"];
+        $cm_nama = $_POST["nama"];           $cm_nopol = strtoupper($_POST["nopol_mobil"]);      $cm_catatan = $_POST["catatan"];
+        $cm_tel = $_POST["telepon"];         $cm_norangka = strtoupper($_POST["nomor_rangka"]);  $cm_progress = $_POST["progress"];
+        $cm_alamat = $_POST["alamat"];       $cm_nomesin = strtoupper($_POST["nomor_mesin"]);    $cm_keterangan = $_POST["keterangan"];
         $cm_tanggal = $_POST["tanggal"];     $cm_tahunmobil = $_POST["tahun_mobil"];
         // Variabel Foto
         $foto1 = $_FILES['foto1']['name']; $foto2 = $_FILES['foto2']['name'];
@@ -184,7 +184,7 @@ Contributor & Credit:
                 if(in_array($ekstensi2, $ekstensi_cek2) === true)  {     
                     move_uploaded_file($file_tmp2, '../../dist/upload/'.$nama_foto_baru2); //Perintah memindahkan file foto
                       // Hanya menjalankan perintah update foto1 ke dalam database, data yang lain akan masuk ke else (if kedua setelah if yang pertama / if yang dijalankan sekarang)
-                        $query_foto2 = "UPDATE client_mobil SET cm_nama='$cm_nama', cm_tel='$cm_tel', cm_alamat='$cm_alamat', cm_tanggal='$cm_tanggal', cm_namamobil='$cm_namamobil', cm_nopol='$cm_nopol', cm_norangka='$cm_norangka', cm_nomesin='$cm_nomesin', cm_tahunmobil='$cm_tahunmobil', cm_jenismobil='$cm_jenismobil', cm_foto2='$nama_foto_baru2' WHERE id_cm='$id_cm'";
+                        $query_foto2 = "UPDATE client_mobil SET cm_nama='$cm_nama', cm_tel='$cm_tel', cm_alamat='$cm_alamat', cm_tanggal='$cm_tanggal', cm_namamobil='$cm_namamobil', cm_nopol='$cm_nopol', cm_norangka='$cm_norangka', cm_nomesin='$cm_nomesin', cm_tahunmobil='$cm_tahunmobil', cm_jenismobil='$cm_jenismobil', cm_tipe='$cm_tipe', cm_foto2='$nama_foto_baru2' WHERE id_cm='$id_cm'";
                         $result_foto2 = mysqli_query($koneksi, $query_foto2);
                       // periska query apakah ada error
                       if(!$result_foto2){
@@ -198,7 +198,7 @@ Contributor & Credit:
                     echo "<script>alert('Ekstensi gambar yang boleh hanya jpg, jpeg atau png 😣');window.location='../clientdm.php';</script>";
                 }
             }else{
-                $query_ecm = "UPDATE client_mobil SET cm_nama='$cm_nama', cm_tel='$cm_tel', cm_alamat='$cm_alamat', cm_tanggal='$cm_tanggal', cm_namamobil='$cm_namamobil', cm_nopol='$cm_nopol', cm_norangka='$cm_norangka', cm_nomesin='$cm_nomesin', cm_tahunmobil='$cm_tahunmobil', cm_jenismobil='$cm_jenismobil', cm_catatan='$cm_catatan', cm_progress='$cm_progress', cm_keterangan='$cm_keterangan' WHERE id_cm = '$id_cm'";
+                $query_ecm = "UPDATE client_mobil SET cm_nama='$cm_nama', cm_tel='$cm_tel', cm_alamat='$cm_alamat', cm_tanggal='$cm_tanggal', cm_namamobil='$cm_namamobil', cm_nopol='$cm_nopol', cm_norangka='$cm_norangka', cm_nomesin='$cm_nomesin', cm_tahunmobil='$cm_tahunmobil', cm_jenismobil='$cm_jenismobil', cm_catatan='$cm_catatan', cm_progress='$cm_progress', cm_keterangan='$cm_keterangan', cm_tipe='$cm_tipe' WHERE id_cm = '$id_cm'";
                 $result = mysqli_query($koneksi, $query_ecm);
 
                 if(!$result){
@@ -222,7 +222,7 @@ Contributor & Credit:
                 if(in_array($ekstensi2, $ekstensi_cek2) === true)  {     
                     move_uploaded_file($file_tmp2, '../../dist/upload/'.$nama_foto_baru2); //Perintah memindahkan file foto
                       // Hanya menjalankan perintah update foto1 ke dalam database, data yang lain akan masuk ke else (if kedua setelah if yang pertama / if yang dijalankan sekarang)
-                        $query_foto2 = "UPDATE client_mobil SET cm_nama='$cm_nama', cm_tel='$cm_tel', cm_alamat='$cm_alamat', cm_tanggal='$cm_tanggal', cm_namamobil='$cm_namamobil', cm_nopol='$cm_nopol', cm_norangka='$cm_norangka', cm_nomesin='$cm_nomesin', cm_tahunmobil='$cm_tahunmobil', cm_jenismobil='$cm_jenismobil', cm_catatan='$cm_catatan', cm_progress='$cm_progress', cm_keterangan='$cm_keterangan', cm_foto2='$nama_foto_baru2' WHERE id_cm='$id_cm'";
+                        $query_foto2 = "UPDATE client_mobil SET cm_nama='$cm_nama', cm_tel='$cm_tel', cm_alamat='$cm_alamat', cm_tanggal='$cm_tanggal', cm_namamobil='$cm_namamobil', cm_nopol='$cm_nopol', cm_norangka='$cm_norangka', cm_nomesin='$cm_nomesin', cm_tahunmobil='$cm_tahunmobil', cm_jenismobil='$cm_jenismobil', cm_catatan='$cm_catatan', cm_progress='$cm_progress', cm_keterangan='$cm_keterangan', cm_tipe='$cm_tipe', cm_foto2='$nama_foto_baru2' WHERE id_cm='$id_cm'";
                         $result_foto2 = mysqli_query($koneksi, $query_foto2);
                       // periska query apakah ada error
                       if(!$result_foto2){
@@ -237,7 +237,7 @@ Contributor & Credit:
                     echo "<script>alert('Ekstensi gambar yang boleh hanya jpg, jpeg atau png 😣');window.location='../clientdm.php';</script>";
                 }
             }else{
-                $query_ecm = "UPDATE client_mobil SET cm_nama='$cm_nama', cm_tel='$cm_tel', cm_alamat='$cm_alamat', cm_tanggal='$cm_tanggal', cm_namamobil='$cm_namamobil', cm_nopol='$cm_nopol', cm_norangka='$cm_norangka', cm_nomesin='$cm_nomesin', cm_tahunmobil='$cm_tahunmobil', cm_jenismobil='$cm_jenismobil', cm_catatan='$cm_catatan', cm_progress='$cm_progress', cm_keterangan='$cm_keterangan' WHERE id_cm = '$id_cm'";
+                $query_ecm = "UPDATE client_mobil SET cm_nama='$cm_nama', cm_tel='$cm_tel', cm_alamat='$cm_alamat', cm_tanggal='$cm_tanggal', cm_namamobil='$cm_namamobil', cm_nopol='$cm_nopol', cm_norangka='$cm_norangka', cm_nomesin='$cm_nomesin', cm_tahunmobil='$cm_tahunmobil', cm_jenismobil='$cm_jenismobil', cm_catatan='$cm_catatan', cm_progress='$cm_progress', cm_keterangan='$cm_keterangan', cm_tipe='$cm_tipe' WHERE id_cm = '$id_cm'";
                 $result = mysqli_query($koneksi, $query_ecm);
 
                 if(!$result){
@@ -377,6 +377,8 @@ Contributor & Credit:
             echo "<script>alert('URL Sosial berhasil diedit ✔'); window.location='../settinges.php';</script>";
         }
 
+    }else{
+        echo "<script>alert('Sedang terjadi kesalahan, silahkan coba lagi ❌'); window.location='../dashboard.php';</script>";
     }
 
 

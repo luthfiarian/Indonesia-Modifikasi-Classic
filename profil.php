@@ -15,7 +15,7 @@ Contributor & Credit:
 include 'admin/database/important.php';
     // Responsive iframe
     if(!isset($_SESSION["screen_width"])){
-        header("Location: responsive.php");
+        header("Location: responsive.php?profil=TRUE");
     }else{
         $width_reso = $_SESSION["screen_width"];
         if($width_reso <= 486){
@@ -85,8 +85,8 @@ include 'admin/database/important.php';
                     </button>
                     <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
                         <ul class="block lg:flex">
-                            <li class="group"><a href="index.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Beranda</a></li>
-                            <li class="group"><a href="profil.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Profil</a></li>
+                            <li class="group"><a href="index.php?index=TRUE" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Beranda</a></li>
+                            <li class="group"><a href="profil.php?profil=TRUE" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Profil</a></li>
                             <li class="group"><a href="galeri.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Galeri</a></li>
                             <li class="group"><a href="tracking.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Tracking</a></li>
                             <li class="group"><a href="kontak.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Kontak</a></li>
@@ -144,12 +144,6 @@ include 'admin/database/important.php';
                                 </li>
                                 <li>
                                     <div class="flex justify space-x-3">
-                                        <img class="w-6 h-6" src="dist/img/cargo_truck.png" alt="profile picture">
-                                        <div class="mb-2 font-medium ">Pengangkutan darat</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="flex justify space-x-3">
                                         <img class="w-6 h-6" src="dist/img/workshop.png" alt="profile picture">
                                         <div class="mb-2 font-medium ">Perbengkelan</div>
                                     </div>
@@ -181,7 +175,7 @@ include 'admin/database/important.php';
                         </div>
                         <hr class="w-24 border-b-2 mx-auto mb-3 mt-2 border-primary rounded-full">
                         <ul class="list-inside text-black text-lg font-semibold  text-center">
-                            <li>Menjadi perusahaan yang unggul dan tangguh dalam bidangnya serta mampu menghadapi persaingan globals</li>
+                            <li>Menjadi perusahaan yang unggul dan tangguh dalam bidangnya serta mampu menghadapi persaingan global</li>
                         </ul>
 
                     </blockquote>
@@ -337,8 +331,8 @@ include 'admin/database/important.php';
                 <div class="px-4 mb-12 text-white lg:w-1/3">
                     <h3 class="font-semibold text-xl my-2 opacity-90">Tautan kami</h3>
                     <ul>
-                        <li class="mb-1"><a href="index.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Beranda</a></li>
-                        <li class="mb-1"><a href="profil.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Profil</a></li>
+                        <li class="mb-1"><a href="index.php?index=TRUE" class="hover:text-primary inline-block transition duration-150 ease-in-out">Beranda</a></li>
+                        <li class="mb-1"><a href="profil.php?profil=TRUE" class="hover:text-primary inline-block transition duration-150 ease-in-out">Profil</a></li>
                         <li class="mb-1"><a href="galeri.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Galeri</a></li>
                         <li class="mb-1"><a href="tracking.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Tracking</a></li>
                         <li class="mb-1"><a href="kontak.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Kontak</a></li>
@@ -352,7 +346,7 @@ include 'admin/database/important.php';
                     <ul>
                         <li class="mb-1"><a href="faq.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">FAQ</a></li>
                         <li class="mb-1"><a href="layanan.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Layanan Kami</a></li>
-                        <li class="mb-1"><a href="lokasi.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Lokasi</a></li>
+                        <li class="mb-1"><a href="lokasi.php?lokasi=TRUE" class="hover:text-primary inline-block transition duration-150 ease-in-out">Lokasi</a></li>
                     </ul>
                 </div>
                 <!-- Tentang Kami Footer -->

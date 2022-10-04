@@ -102,8 +102,8 @@ if (isset($_GET["cari"])) {
                     </button>
                     <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
                         <ul class="block lg:flex">
-                            <li class="group"><a href="index.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Beranda</a></li>
-                            <li class="group"><a href="profil.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Profil</a></li>
+                            <li class="group"><a href="index.php?index=TRUE" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Beranda</a></li>
+                            <li class="group"><a href="profil.php?profil=TRUE" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Profil</a></li>
                             <li class="group"><a href="galeri.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Galeri</a></li>
                             <li class="group"><a href="tracking.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Tracking</a></li>
                             <li class="group"><a href="kontak.php" class="text-base font-semibold text-dark py-2 mx-8 flex group-hover:text-primary transition duration-300 ease-in-out">Kontak</a></li>
@@ -247,10 +247,13 @@ if (isset($_GET["cari"])) {
                                         if ($data["cm_foto1"] && $data["cm_foto2"]) {
                                             echo "<td class='pr-2'><a href='dist/upload/" . $data['cm_foto1'] . "' data-lightbox='roadtrip'><img src='dist/upload/" . $data["cm_foto1"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
                                             echo "<td class='pr-2'><a href='dist/upload/" . $data['cm_foto2'] . "' data-lightbox='roadtrip'><img src='dist/upload/" . $data["cm_foto2"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
+                                            $colspan = TRUE;
                                         } else if ($data["cm_foto1"]) {
                                             echo "<td class='pr-2'><a href='dist/upload/" . $data['cm_foto1'] . "' data-lightbox='image-1'><img src='dist/upload/" . $data["cm_foto1"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
                                         } else if ($data["cm_foto2"]) {
                                             echo "<td class='pr-2'><a href='dist/upload/" . $data['cm_foto2'] . "' data-lightbox='image-1'><img src='dist/upload/" . $data["cm_foto2"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
+                                        }else{
+                                            $nodata = FALSE;
                                         }
 
 
@@ -263,13 +266,16 @@ if (isset($_GET["cari"])) {
                                         }
                                     } else if ($success == "Kontruksi") {
                                         $complete = FALSE;
-                                        if (isset($data["ck_foto1"]) && isset($data["ck_foto2"])) {
+                                        if ($data["ck_foto1"] && $data["ck_foto2"]) {
                                             echo "<td class='pr-2'><a href='dist/upload/" . $data['ck_foto1'] . "' data-lightbox='roadtrip'><img src='dist/upload/" . $data["ck_foto1"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
                                             echo "<td class='pr-2'><a href='dist/upload/" . $data['ck_foto2'] . "' data-lightbox='roadtrip'><img src='dist/upload/" . $data["ck_foto2"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
-                                        } else if (isset($data["ck_foto1"])) {
+                                            $colspan = TRUE;
+                                        } else if ($data["ck_foto1"]) {
                                             echo "<td class='pr-2'><a href='dist/upload/" . $data['ck_foto1'] . "' data-lightbox='image-1'><img src='dist/upload/" . $data["ck_foto1"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
-                                        } else if (isset($data["ck_foto2"])) {
+                                        } else if ($data["ck_foto2"]) {
                                             echo "<td class='pr-2'><a href='dist/upload/" . $data['ck_foto2'] . "' data-lightbox='image-1'><img src='dist/upload/" . $data["ck_foto2"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
+                                        }else{
+                                            $nodata = FALSE;
                                         }
 
                                         if ($data["ck_progress"] == "100") {
@@ -285,12 +291,12 @@ if (isset($_GET["cari"])) {
                                 </tr>
                                 <?php if ($success == "Mobil") { ?>
                                     <tr>
-                                        <td colspan="2"><?php echo "<p>Progress :</p>";
+                                        <td <?php if($colspan == TRUE){ echo "colspan='2'"; } ?> style="<?php if(!$nodata){echo 'width:200px';} ?>"><?php echo "<p>Progress :</p>";
                                                         echo "<div class='flex w-full'><div class='w-5/6'><div style='width: 95%;' class='bg-gray-200 rounded-full h-2.5 dark:bg-gray-700'><div wid class='bg-blue-600 mr-5 h-2.5 rounded-full' style='width:" . $data['cm_progress'] . "%'></div></div></div><div class='w-1/6'><p class='font-semibold -mt-2'>" . $data['cm_progress'] . " %</p></div></div>"; ?></td>
                                     </tr>
-                                <?php } else if ($success == "Mobil") { ?>
+                                <?php } else if ($success == "Kontruksi") { ?>
                                     <tr>
-                                        <td colspan="2"><?php echo "<p>Progress :</p>";
+                                        <td <?php if($colspan == TRUE){ echo "colspan='2'"; } ?> style="<?php if(!$nodata){echo 'width:200px';} ?>"><?php echo "<p>Progress :</p>";
                                                         echo "<div class='flex w-full'><div class='w-5/6'><div style='width: 95%;' class='bg-gray-200 rounded-full h-2.5 dark:bg-gray-700'><div wid class='bg-blue-600 mr-5 h-2.5 rounded-full' style='width:" . $data['ck_progress'] . "%'></div></div></div><div class='w-1/6'><p class='font-semibold -mt-2'>" . $data['ck_progress'] . " %</p></div></div>"; ?></td>
                                     </tr>
                                 <?php } ?>
@@ -431,8 +437,8 @@ if (isset($_GET["cari"])) {
                 <div class="px-4 mb-12 text-white lg:w-1/3">
                     <h3 class="font-semibold text-xl my-2 opacity-90">Tautan kami</h3>
                     <ul>
-                        <li class="mb-1"><a href="index.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Beranda</a></li>
-                        <li class="mb-1"><a href="profil.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Profil</a></li>
+                        <li class="mb-1"><a href="index.php?index=TRUE" class="hover:text-primary inline-block transition duration-150 ease-in-out">Beranda</a></li>
+                        <li class="mb-1"><a href="profil.php?profil=TRUE" class="hover:text-primary inline-block transition duration-150 ease-in-out">Profil</a></li>
                         <li class="mb-1"><a href="galeri.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Galeri</a></li>
                         <li class="mb-1"><a href="tracking.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Tracking</a></li>
                         <li class="mb-1"><a href="kontak.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Kontak</a></li>
@@ -446,7 +452,7 @@ if (isset($_GET["cari"])) {
                     <ul>
                         <li class="mb-1"><a href="faq.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">FAQ</a></li>
                         <li class="mb-1"><a href="layanan.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Layanan Kami</a></li>
-                        <li class="mb-1"><a href="lokasi.php" class="hover:text-primary inline-block transition duration-150 ease-in-out">Lokasi</a></li>
+                        <li class="mb-1"><a href="lokasi.php?lokasi=TRUE" class="hover:text-primary inline-block transition duration-150 ease-in-out">Lokasi</a></li>
                     </ul>
                 </div>
                 <!-- Tentang Kami Footer -->
