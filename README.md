@@ -76,6 +76,8 @@ Terima kasih kepada Bapak Iwan Setiawan selaku pemilik perusahaan PT Inti Maju C
 
 - E-Tracking
 
+- Wordpress
+
   
 
 ## Catatan Aplikasi Website
@@ -100,7 +102,7 @@ Aplikasi Website ini telah dilisensikan oleh PT Inti Maju Cemerlang (Indonesia M
 
 Teknologi yang digunakan pada pembuatan Aplikasi Website:
 
-- [HTML5/CSS3] - Bahasa pemrogaman pembangun _Website_
+- [HTML5/CSS3] - Bahasa markah pembangun _Website_
 
 - [PHP] - Bahasa pemrogaman pembangun basis data _Website_.
 
@@ -108,24 +110,32 @@ Teknologi yang digunakan pada pembuatan Aplikasi Website:
 
   
 
-### Versi Aplikasi Website V1.1
+### Versi Aplikasi Website V1.25
 
 - Versi sebelumnya V1.0 : [MediaFire](https://www.mediafire.com/file/t6a5d5rnjjxxkwv/Indonesia-Modifikasi-Classic-main_V1.0.zip/file) | [MEGA](https://mega.nz/file/2YQVlCTB#d_lxetmukLEAKBXdwts29bAn5rv-lv3jzSmwy5m3H4s)
+- Versi Sebelumnya V1.1 : [MediaFire](https://www.mediafire.com/file/3gk0rhmawor2z72/Indonesia-Modifikasi-Classic-main_V1.1.zip/file) | [MEGA](https://mega.nz/file/jdwjWSrA#xd4XZUMZ7w4hPY9HAc3w4GTPTjhHOZRFylMyefYyLcE)
 
 ## Log
-- Bug Tracking, dan Edit Mobil
-- Penyesuain Reset Web Log, dan Deskripsi Web
-- Penambahan Dokumentasi
-- Penambahan Fitur Reset Data Client dan Kontruksi (Untuk pengelola)
+- Perbaikan Bug
+- Pembaharuan Halaman Tracking
+- Menambah Database IMC History
+- Penyusuaian System
 
 
-## Instalasi Website
+## Website
+- [PT Inti Cemerlang](https://pt.imc27.com)
+
+- [Indonesia Modifikasi Classic](https://mobil.imc27.com)
+
+## Instalasi Website & Mengedit
 
 - Dibutuhkan Webserver [Xammp](https://www.apachefriends.org/) | [Nginx](https://www.nginx.com/)
-- Dibutuhkan [Node.js](https://nodejs.org/) v10+ untuk menjalankan Tailwindcss.
+- Dibutuhkan [Node.js](https://nodejs.org/) V10+ untuk menjalankan Tailwindcss.
+- Dibutuhkan [Tailwindcss](https://tailwindcss.com/) Instalasi Tailwindcss
 
+Database File :
 ```sh
-
-npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
+./admin/database/imc.sql
+./admin/database/imc_client_history.sql
 
 ```

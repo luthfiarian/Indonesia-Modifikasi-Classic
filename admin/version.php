@@ -57,7 +57,7 @@ include 'database/session_false.php'
         <div class="w-full mx-auto">
           <div class="w-5/6 md:w-1/2 py-10 mx-auto border-2 shadow-2xl bg-slate-100 border-white rounded-3xl">
             <h1 class="text-lg font-semibold text-center">Hello👋, this is system</h1>
-            <h2 class="text-2xl font-semibold text-center">Version 1.1</h1>
+            <h2 class="text-2xl font-semibold text-center">Version 1.25</h1>
               <hr class="border-2 border-b-slate-600 w-10 my-3 mx-auto rounded-full">
               <p class="font-semibold text-sm text-center uppercase">PT Inti Maju Cemerlang</p>
               

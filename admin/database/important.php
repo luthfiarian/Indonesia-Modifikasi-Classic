@@ -1,6 +1,7 @@
 <?php
     session_start();
     include 'connectiondb.php';
+    // Primary Database
     //Connect User
     $query_user         = "SELECT * FROM user";
     $result_user        = mysqli_query($koneksi, $query_user);
@@ -30,4 +31,16 @@
     $query_ck           = "SELECT * FROM client_kontruksi";
     $result_ck          = mysqli_query($koneksi, $query_ck);
 
-    ?>
+    //Connect User
+    $query_user         = "SELECT * FROM user";
+    $result_user        = mysqli_query($koneksi, $query_user);
+
+    // Secondary Database
+    //History Mobil
+    $query_hm         = "SELECT * FROM mobil";
+    $result_hm        = mysqli_query($koneksi_sc, $query_hm);
+
+    //History Kontruksi
+    $query_hk         = "SELECT * FROM kontruksi";
+    $result_hk        = mysqli_query($koneksi_sc, $query_hk);
+?>

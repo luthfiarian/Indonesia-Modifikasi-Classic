@@ -19,12 +19,16 @@ if (isset($_GET["cari"])) {
     $pencarian = $_GET["pencarian"];
     $qm_pencarian = "SELECT * FROM client_mobil WHERE cm_tracking LIKE '$pencarian'";
     $rm_pencarian = mysqli_query($koneksi, $qm_pencarian);
-    if (isset($rm_pencarian)) {
+
+    $r_history = mysqli_query($koneksi_sc, "SELECT * FROM mobil WHERE hm_tracking LIKE '$pencarian'");
+
+    if (isset($rm_pencarian) && isset($r_history)) {
         $rows = mysqli_num_rows($rm_pencarian);
         $data = mysqli_fetch_assoc($rm_pencarian);
         if (!$rows == "1") {
             $qk_pencarian = "SELECT * FROM client_kontruksi WHERE ck_tracking LIKE '$pencarian'";
             $rk_pencarian = mysqli_query($koneksi, $qk_pencarian);
+            $r_history = mysqli_query($koneksi_sc, "SELECT * FROM kontruksi WHERE hk_tracking LIKE '$pencarian'");
             if (isset($rk_pencarian)) {
                 $data = mysqli_fetch_assoc($rk_pencarian);
                 $rows = mysqli_num_rows($rk_pencarian);
@@ -33,6 +37,7 @@ if (isset($_GET["cari"])) {
                     echo "<script>alert('Data Tidak Ditemukan, Mohon Periksa Kembali');window.location='tracking.php';</script>";
                     exit;
                 } else {
+
                     $progress = $data["ck_progress"];
                     $success = "Kontruksi";
                 }
@@ -116,7 +121,8 @@ if (isset($_GET["cari"])) {
     </header>
     <!-- Tracking Start-->
     <content class="pt-3.5">
-        <section id="beranda" class="pt-36 pb-32">
+        <!-- Form Search Tracking Code Start -->
+        <section id="beranda" class="pt-36 pb-14">
             <div class="container">
                 <h2 class="font-bold text-2xl mb-3 text-dark text-center">Tracking</h2>
                 <hr class="w-24 border-b-2 mx-auto mt-1 mb-8 border-primary rounded-full">
@@ -132,194 +138,185 @@ if (isset($_GET["cari"])) {
                     </div>
                     <button type="submit" name="cari" class="text-white right-2.5 bottom-2.5 mt-3 bg-primary hover:bg-primary_lite focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Cari</button>
                 </form>
-                <!-- Tracking Progress -->
-                <?php
-                if (isset($cari)) { ?>
-                    <h2 class="font-semibold text-xl pt-10">Tentang</h2>
-                    <?php if ($success == "Mobil") { ?>
-                        <table class="table table-auto">
-                            <tr>
-                                <td>Pemilik</td>
-                                <td class="px-5">:</td>
-                                <td><?php echo $data["cm_nama"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Ponsel</td>
-                                <td class="px-5">:</td>
-                                <td><?php echo $data["cm_tel"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Alamat</td>
-                                <td class="px-5">:</td>
-                                <td><?php echo $data["cm_alamat"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Mobil / Tahun</td>
-                                <td class="px-5">:</td>
-                                <td><?php echo $data["cm_namamobil"]; ?> / <?php echo $data["cm_tahunmobil"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Nomor Polisi</td>
-                                <td class="px-5">:</td>
-                                <td><?php echo $data["cm_nopol"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Nomor Rangka</td>
-                                <td class="px-5">:</td>
-                                <td><?php echo $data["cm_norangka"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Nomor Mesin</td>
-                                <td class="px-5">:</td>
-                                <td><?php echo $data["cm_nomesin"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Catatan</td>
-                                <td class="px-5">:</td>
-                                <td><?php echo $data["cm_catatan"]; ?></td>
-                            </tr>
-                        </table>
-                    <?php } else if ($success == "Kontruksi") { ?>
-                        <table class="table table-auto">
-                            <tr>
-                                <td>Pemilik</td>
-                                <td class="px-5">:</td>
-                                <td><?php echo $data["ck_nama"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Ponsel</td>
-                                <td class="px-5">:</td>
-                                <td><?php echo $data["ck_tel"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Alamat</td>
-                                <td class="px-5">:</td>
-                                <td><?php echo $data["ck_alamat"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Jenis</td>
-                                <td class="px-5">:</td>
-                                <td><?php echo $data["ck_jenis"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Catatan</td>
-                                <td class="px-5">:</td>
-                                <td><?php echo $data["ck_catatan"]; ?></td>
-                            </tr>
-                        </table>
-                    <?php } ?>
-                    <ol class="relative mt-5 border-l border-gray-200">
-                        <li class="mb-5 ml-4">
-                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white"></div>
-                            <time class="mb-1 text-sm font-normal leading-none text-gray-400">Masuk</time>
-                            <h3 class="text-lg font-semibold text-gray-900 ">Pesanan Anda Telah Terdaftar</h3>
-                            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400"><?php if ($success == "Mobil") {
-                                                                                                        echo $data["cm_tanggalmasuk"];
-                                                                                                    } else if ($success == "Kontruksi") {
-                                                                                                        echo $data["ck_tanggalmasuk"];
-                                                                                                    } ?></p>
-                        </li>
-                        <li class="mb-5 ml-4">
-                            <div class="absolute w-3 h-3 <?php if ($progress == '100') {
-                                                                echo 'bg-gray-200';
-                                                            } else if ($progress == '100%') {
-                                                                echo 'bg-gray-200';
-                                                            } else {
-                                                                echo 'bg-gray-900';
-                                                            } ?> rounded-full mt-1.5 -left-1.5 border border-white "></div>
-                            <time class="mb-1 text-sm font-normal leading-none text-gray-400">Proses</time>
-                            <h3 class="text-lg font-semibold text-gray-900"><?php if ($success == "Mobil") {
-                                                                                echo $data["cm_keterangan"];
-                                                                            } else if ($success == "Kontruksi") {
-                                                                                echo $data["ck_keterangan"];
-                                                                            } ?></h3>
-                            <p class="text-base font-normal text-gray-500"><?php if ($success == "Mobil") {
-                                                                                echo $data["cm_tanggal"];
-                                                                            } else if ($success == "Kontruksi") {
-                                                                                echo $data["ck_tanggal"];
-                                                                            } ?></p>
-                            <!-- Tabel Gambar -->
-                            <table class="table-auto">
-                                <tr>
-                                    <?php
-                                    if ($success == "Mobil") {
-                                        $complete = FALSE;
-                                        if ($data["cm_foto1"] && $data["cm_foto2"]) {
-                                            echo "<td class='pr-2'><a href='dist/upload/" . $data['cm_foto1'] . "' data-lightbox='roadtrip'><img src='dist/upload/" . $data["cm_foto1"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
-                                            echo "<td class='pr-2'><a href='dist/upload/" . $data['cm_foto2'] . "' data-lightbox='roadtrip'><img src='dist/upload/" . $data["cm_foto2"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
-                                            $colspan = TRUE;
-                                        } else if ($data["cm_foto1"]) {
-                                            echo "<td class='pr-2'><a href='dist/upload/" . $data['cm_foto1'] . "' data-lightbox='image-1'><img src='dist/upload/" . $data["cm_foto1"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
-                                        } else if ($data["cm_foto2"]) {
-                                            echo "<td class='pr-2'><a href='dist/upload/" . $data['cm_foto2'] . "' data-lightbox='image-1'><img src='dist/upload/" . $data["cm_foto2"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
-                                        }else{
-                                            $nodata = FALSE;
-                                        }
-
-
-                                        if ($data["cm_progress"] == "100") {
-                                            $complete = TRUE;
-                                        } else if ($data["cm_progress"] == "100%") {
-                                            $complete = TRUE;
-                                        } else {
-                                            $complete = FALSE;
-                                        }
-                                    } else if ($success == "Kontruksi") {
-                                        $complete = FALSE;
-                                        if ($data["ck_foto1"] && $data["ck_foto2"]) {
-                                            echo "<td class='pr-2'><a href='dist/upload/" . $data['ck_foto1'] . "' data-lightbox='roadtrip'><img src='dist/upload/" . $data["ck_foto1"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
-                                            echo "<td class='pr-2'><a href='dist/upload/" . $data['ck_foto2'] . "' data-lightbox='roadtrip'><img src='dist/upload/" . $data["ck_foto2"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
-                                            $colspan = TRUE;
-                                        } else if ($data["ck_foto1"]) {
-                                            echo "<td class='pr-2'><a href='dist/upload/" . $data['ck_foto1'] . "' data-lightbox='image-1'><img src='dist/upload/" . $data["ck_foto1"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
-                                        } else if ($data["ck_foto2"]) {
-                                            echo "<td class='pr-2'><a href='dist/upload/" . $data['ck_foto2'] . "' data-lightbox='image-1'><img src='dist/upload/" . $data["ck_foto2"] . "' alt='Foto Bukti' title='Foto Bukti Proses' width='144px' height='90px' class='rounded-lg max-w-[144px] transition duration-300 hover:shadow-xl'></a></td>";
-                                        }else{
-                                            $nodata = FALSE;
-                                        }
-
-                                        if ($data["ck_progress"] == "100") {
-                                            $complete = TRUE;
-                                        } else if ($data["ck_progress"] == "100%") {
-                                            $complete = TRUE;
-                                        } else {
-                                            $complete = FALSE;
-                                        }
-                                    }
-
-                                    ?>
-                                </tr>
-                                <?php if ($success == "Mobil") { ?>
-                                    <tr>
-                                        <td <?php if($colspan == TRUE){ echo "colspan='2'"; } ?> style="<?php if(!$nodata){echo 'width:200px';} ?>"><?php echo "<p>Progress :</p>";
-                                                        echo "<div class='flex w-full'><div class='w-5/6'><div style='width: 95%;' class='bg-gray-200 rounded-full h-2.5 dark:bg-gray-700'><div wid class='bg-blue-600 mr-5 h-2.5 rounded-full' style='width:" . $data['cm_progress'] . "%'></div></div></div><div class='w-1/6'><p class='font-semibold -mt-2'>" . $data['cm_progress'] . " %</p></div></div>"; ?></td>
-                                    </tr>
-                                <?php } else if ($success == "Kontruksi") { ?>
-                                    <tr>
-                                        <td <?php if($colspan == TRUE){ echo "colspan='2'"; } ?> style="<?php if(!$nodata){echo 'width:200px';} ?>"><?php echo "<p>Progress :</p>";
-                                                        echo "<div class='flex w-full'><div class='w-5/6'><div style='width: 95%;' class='bg-gray-200 rounded-full h-2.5 dark:bg-gray-700'><div wid class='bg-blue-600 mr-5 h-2.5 rounded-full' style='width:" . $data['ck_progress'] . "%'></div></div></div><div class='w-1/6'><p class='font-semibold -mt-2'>" . $data['ck_progress'] . " %</p></div></div>"; ?></td>
-                                    </tr>
-                                <?php } ?>
-                            </table>
-                        </li>
-                        <?php if (!$complete == FALSE) { ?>
-                            <li class="ml-4">
-                                <div class="absolute w-3 h-3 bg-gray-900 rounded-full mt-1.5 -left-1.5 border border-white"></div>
-                                <time class="mb-1 text-sm font-normal leading-none text-gray-400">Selesai</time>
-                                <h3 class="text-lg font-semibold text-gray-900">Pesanan Anda Telah Selesai</h3>
-                                <p class="text-base font-normal text-gray-500 dark:text-gray-400"><?php if ($success == "Mobil") {
-                                                                                                        echo $data["cm_tanggal"];
-                                                                                                    } else if ($success == "Kontruksi") {
-                                                                                                        echo $data["ck_tanggal"];
-                                                                                                    } ?></p>
-                            </li>
-                        <?php } ?>
-                    </ol>
-                    <p class="text-red-500 text-sm">NB : Cek Progress Anda Secara Berkala*</p>
-                <?php } ?>
-                <!-- End Tracking Progress -->
             </div>
         </section>
+        <!-- End of Form Search Tracking -->
+
+        <!-- Tracking Detail Start -->
+        <!-- Tracking Mobil -->
+        <?php if(isset($pencarian)){ if($success == "Mobil") { ?> 
+        <section id="detail" class="pb-10">
+            <div class="container">
+            <h1 class="text-2xl font-semibold text-center py-10">Tracking Pesanan Anda</h1>
+                <!-- User Information Tracking -->
+                <table class="table-auto" align="center">
+                    <tr><td colspan="3" class="font-semibold text-lg">Informasi Tentang Pelanggan</td></tr>
+                    <tr><td>Nama</td><td>:</td><td><?php echo $data["cm_nama"]; ?></td></tr>
+                    <tr><td>Nomor Ponsel</td><td>:</td><td><?php echo $data["cm_tel"]; ?></td></tr>
+                    <tr><td>Alamat</td><td>:</td><td><?php echo $data["cm_alamat"]; ?></td></tr>
+                    <tr><td>Nama Kendaraan</td><td>:</td><td><?php echo $data["cm_namamobil"]; ?></td></tr>
+                    <tr><td>Nomor Polisi</td><td>:</td><td><?php echo $data["cm_nopol"]; ?></td></tr>
+                    <tr><td>Nomor Mesin</td><td>:</td><td><?php echo $data["cm_nomesin"]; ?></td></tr>
+                    <tr><td>Tahun Kendaraan</td><td>:</td><td><?php echo $data["cm_tahunmobil"]; ?></td></tr>
+                    <tr><td>Jenis Kendaraan</td><td>:</td><td><?php echo $data["cm_jenismobil"]; ?></td></tr>
+                    <tr><td>Catatan</td><td>:</td><td><?php echo $data["cm_catatan"]; ?></td></tr>
+                </table>
+                <!-- Progress Bar -->
+                <div class="py-10 w-full">
+                    <div class="flex justify-between mb-1">
+                        <span class="text-base font-medium text-blue-700">Progress Pengerjaan</span>
+                        <span class="text-sm font-medium text-blue-700"><?php echo $data["cm_progress"] ?>%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-blue-600 h-2.5 rounded-full" style="width: <?php echo $data['cm_progress'] ?>%"></div>
+                    </div>
+                </div>
+                <!--  Progress Tracking -->
+                <table class="table-auto border-l border-gray-300">
+                    <tr>
+                        <td>
+                            <div class="relative p-0.5 border-8 border-slate-300 rounded-full -ml-3"></div>
+                        </td>
+                        <td>
+                            <div class="block">
+                                <p class="text-sm">Pesanan Masuk</p>
+                                <?php echo $data["cm_tanggalmasuk"] ?>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php $i = 1; while($data_track = mysqli_fetch_assoc($r_history)){ ?>
+                    <tr class="<?php if($data_track["hm_foto1"] || $data_track["hm_foto2"]){ echo 'h-60'; }else{ echo 'h-20'; } ?>">
+                        <td>
+                            <div class="relative p-0.5 border-8 border-slate-300 rounded-full -ml-3"></div>
+                        </td>
+                        <td>
+                            <div class="block">
+                                <p class="text-sm">Proses Ke-<?php echo $i ?></p>
+                                <?php echo $data_track["hm_tanggal"]; ?><br>
+                                <?php echo $data_track["hm_keterangan"]; ?>
+                            </div>
+                            <?php if($data_track["hm_foto1"] && $data_track["hm_foto2"]){ ?>
+                            <div class="flex pt-1">
+                                <a href="dist/upload/<?php echo $data_track['hm_foto1']; ?>" data-lightbox="roadtrip" data-title="Foto Bukti"><img src="dist/upload/<?php echo $data_track['hm_foto1'] ?>" alt="Foto Bukti" class="max-h-28 rounded-xl transition duration-300 ease-in-out hover:scale-110 hover:shadow-xl"> <span class="px-4"></span></a>
+                                <a href="dist/upload/<?php echo $data_track['hm_foto2']; ?>" data-lightbox="roadtrip" data-title="Foto Bukti"><img src="dist/upload/<?php echo $data_track['hm_foto2'] ?>" alt="Foto Bukti" class="max-h-28 rounded-xl transition duration-300 ease-in-out hover:scale-110 hover:shadow-xl"></a>
+                            </div>
+                            <?php }else if($data_track["hm_foto1"]){ ?>
+                            <div class="flex pt-1">
+                            <a href="dist/upload/<?php echo $data_track['hm_foto1']; ?>" data-lightbox="roadtrip" data-title="Foto Bukti"><img src="dist/upload/<?php echo $data_track['hm_foto1'] ?>" alt="Foto Bukti" class="max-h-28 rounded-xl transition duration-300 ease-in-out hover:scale-110 hover:shadow-xl"></a>
+                            </div>
+                            <?php }else if($data_track["hm_foto2"]){ ?>
+                            <div class="flex pt-1">
+                            <a href="dist/upload/<?php echo $data_track['hm_foto2']; ?>" data-lightbox="roadtrip" data-title="Foto Bukti"><img src="dist/upload/<?php echo $data_track['hm_foto2'] ?>" alt="Foto Bukti" class="max-h-28 rounded-xl transition duration-300 ease-in-out hover:scale-110 hover:shadow-xl"></a>
+                            </div>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                    <?php $i++;} ?>
+                    <?php if($data["cm_progress"] == "100"){ ?>
+                    <tr>
+                        <td>
+                            <div class="relative p-0.5 border-8 border-slate-500 rounded-full -ml-3"></div>
+                        </td>
+                        <td>
+                            <div class="block">
+                                <p class="text-sm">Pesanan Selesai ✔</p>
+                                <?php echo $data["cm_tanggal"] ?>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </table>
+            </div>
+        </section>
+        <?php }else ?>
+        <!-- Tracking Kontruksi -->
+        <?php if($success == "Kontruksi"){?>
+            <section id="detail" class="pb-16">
+            <div class="container">
+                <h1 class="text-2xl font-semibold text-center py-10">Tracking Pesanan Anda</h1>
+                <!-- User Information Tracking -->
+                <table class="table-auto" align="center">
+                    <tr><td colspan="3" class="font-semibold text-lg">Informasi Tentang Pelanggan</td></tr>
+                    <tr><td>Nama</td><td>:</td><td><?php echo $data["ck_nama"]; ?></td></tr>
+                    <tr><td>Nomor Ponsel</td><td>:</td><td><?php echo $data["ck_tel"]; ?></td></tr>
+                    <tr><td>Alamat</td><td>:</td><td><?php echo $data["ck_alamat"]; ?></td></tr>
+                    <tr><td>Jenis Pesanan</td><td>:</td><td><?php echo $data["ck_jenis"]; ?></td></tr>
+                    <tr><td>Catatan</td><td>:</td><td><?php echo $data["ck_catatan"]; ?></td></tr>
+                </table>
+                <!-- Progress Bar -->
+                <div class="py-10 w-full">
+                    <div class="flex justify-between mb-1">
+                        <span class="text-base font-medium text-blue-700">Progress Pengerjaan</span>
+                        <span class="text-sm font-medium text-blue-700"><?php echo $data["ck_progress"] ?>%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-blue-600 h-2.5 rounded-full" style="width: <?php echo $data['ck_progress'] ?>%"></div>
+                    </div>
+                </div>
+                <!--  Progress Tracking -->
+                <table class="table-auto border-l border-gray-300">
+                    <tr>
+                        <td>
+                            <div class="relative p-0.5 border-8 border-slate-300 rounded-full -ml-3"></div>
+                        </td>
+                        <td>
+                            <div class="block">
+                                <p class="text-sm">Pesanan Masuk</p>
+                                <?php echo $data["ck_tanggalmasuk"] ?>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php $i = 1; while($data_track = mysqli_fetch_assoc($r_history)){ ?>
+                    <tr class="<?php if($data_track["hk_foto1"] || $data_track["hk_foto2"]){ echo 'h-60'; }else{ echo 'h-20'; } ?>">
+                        <td>
+                            <div class="relative p-0.5 border-8 border-slate-300 rounded-full -ml-3"></div>
+                        </td>
+                        <td>
+                            <div class="block">
+                                <p class="text-sm">Proses Ke-<?php echo $i ?></p>
+                                <?php echo $data_track["hk_tanggal"]; ?><br>
+                                <?php echo $data_track["hk_keterangan"]; ?>
+                            </div>
+                            <?php if($data_track["hk_foto1"] && $data_track["hk_foto2"]){ ?>
+                            <div class="flex pt-1">
+                            <a href="dist/upload/<?php echo $data_track['hk_foto1']; ?>" data-lightbox="roadtrip" data-title="Foto Bukti"><img src="dist/upload/<?php echo $data_track['hk_foto1'] ?>" alt="Foto Bukti" class="max-h-28 rounded-xl transition duration-300 ease-in-out hover:scale-110 hover:shadow-xl"> <span class="px-4"></span></a>
+                            <a href="dist/upload/<?php echo $data_track['hk_foto2']; ?>" data-lightbox="roadtrip" data-title="Foto Bukti"> <img src="dist/upload/<?php echo $data_track['hk_foto2'] ?>" alt="Foto Bukti" class="max-h-28 rounded-xl transition duration-300 ease-in-out hover:scale-110 hover:shadow-xl"></a>
+                            </div>
+                            <?php }else if($data_track["hk_foto1"]){ ?>
+                            <div class="flex pt-1">
+                            <a href="dist/upload/<?php echo $data_track['hk_foto1']; ?>" data-lightbox="roadtrip" data-title="Foto Bukti"><img src="dist/upload/<?php echo $data_track['hk_foto1'] ?>" alt="Foto Bukti" class="max-h-28 rounded-xl transition duration-300 ease-in-out hover:scale-110 hover:shadow-xl"></a>
+                            </div>
+                            <?php }else if($data_track["hk_foto2"]){ ?>
+                            <div class="flex pt-1">
+                            <a href="dist/upload/<?php echo $data_track['hk_foto2']; ?>" data-lightbox="roadtrip" data-title="Foto Bukti"><img src="dist/upload/<?php echo $data_track['hk_foto2'] ?>" alt="Foto Bukti" class="max-h-28 rounded-xl transition duration-300 ease-in-out hover:scale-110 hover:shadow-xl"></a>
+                            </div>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                    <?php $i++;} ?>
+                    <?php if($data["ck_progress"] == "100"){ ?>
+                    <tr>
+                        <td>
+                            <div class="relative p-0.5 border-8 border-slate-500 rounded-full -ml-3"></div>
+                        </td>
+                        <td>
+                            <div class="block">
+                                <p class="text-sm">Pesanan Selesai ✔</p>
+                                <?php echo $data["ck_tanggal"] ?>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </table>
+            </div>
+        </section>
+        <?php } ?>
+        <div class="w-full px-4 flex py-14">
+            <button class="py-2 px-4 bg-primary mx-auto rounded-full transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-2xl" onclick="window.print();">Print Hasil Tracking</button>
+        </div>
+        <?php } ?>   
+        <!-- Tracking Detail End -->
+
     </content>
     <!-- End Tracking -->
 

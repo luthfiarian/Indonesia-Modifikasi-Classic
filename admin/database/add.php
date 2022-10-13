@@ -124,14 +124,14 @@ Contributor & Credit:
     }else if(isset($_POST["daftar_cm"])){
         $cm_nama = $_POST['nama'];              $cm_tel = $_POST['telepon'];
         $cm_alamat = $_POST['alamat'];          $cm_tanggal = $_POST['tanggal'];
-        $cm_namamobil = $_POST['nama_mobil'];   $cm_nopol = $_POST['nopol_mobil'];
-        $cm_norangka = $_POST['nomor_rangka'];  $cm_nomesin = $_POST['nomor_mesin'];
+        $cm_namamobil = $_POST['nama_mobil'];   $cm_nopol = strtoupper($_POST['nopol_mobil']);
+        $cm_norangka = $_POST['nomor_rangka'];  $cm_nomesin = strtoupper($_POST['nomor_mesin']);
         $cm_tahunmobil = $_POST['tahun_mobil']; $cm_jenismobil = $_POST['jenis_kendaraan'];
         $cm_catatan = $_POST['catatan'];        $cm_tracking = generateRandomString();
 
         // Hidden Value
         $cm_tipe = "Baru";
-        $cm_tanggalmasuk = date('l, d-F-Y g:i a');
+        $cm_tanggalmasuk = date('d/m/Y');
         $cm_keterangan = "Baru di daftarkan pada " . date('l, d-F-Y g:i a');
         $cm_foto1 = NULL;
         $cm_foto2 = NULL;
@@ -142,6 +142,10 @@ Contributor & Credit:
 
         $qp_cm = "SELECT * FROM client_mobil WHERE cm_nama='$cm_nama'";
         $pr_cm = mysqli_query($koneksi, $qp_cm);
+
+        $qhm = "INSERT INTO mobil (hm_tracking, hm_tanggal, hm_keterangan) VALUES ('$cm_tracking', '$cm_tanggal', '$cm_keterangan')";
+        $rhm = mysqli_query($koneksi_sc, $qhm);
+
         if(isset($pr_cm)){
             $d_pr = mysqli_fetch_assoc($pr_cm);
             $id_cm = $d_pr["id_cm"];
@@ -152,9 +156,15 @@ Contributor & Credit:
                 " - ".mysqli_error($koneksi));
                 echo "<script>alert('Server sedang bermasalah ❌');window.location='../clientm.php';</script>";
         } else {
-            // Log web
-            log_web_clientm_data($usr_session, $nm_session, $id_cm);
-            echo "<script>alert('Data berhasil ditambah ✔');window.location='../printdm.php?id_cm=". $id_cm ."';</script>";
+            if(!$rhm){
+                die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
+                " - ".mysqli_error($koneksi));
+                echo "<script>alert('Server sedang bermasalah ❌');window.location='../clientm.php';</script>";
+            }else{
+                // Log web
+                log_web_clientm_data($usr_session, $nm_session, $id_cm);
+                echo "<script>alert('Data berhasil ditambah ✔');window.location='../printdm.php?id_cm=". $id_cm ."';</script>";
+            }
         }
 
     }else if(isset($_POST["daftar_ck"])){
@@ -165,7 +175,7 @@ Contributor & Credit:
 
         // Hidden Value
         $ck_tipe = "Baru";
-        $ck_tanggalmasuk = date('l, d-F-Y g:i a');
+        $ck_tanggalmasuk = date('d/m/Y');
         $ck_keterangan = "Baru di daftarkan pada " . date('l, d-F-Y g:i a');
         $ck_foto1 = NULL;
         $ck_foto2 = NULL;
@@ -176,6 +186,10 @@ Contributor & Credit:
     
         $qp_ck = "SELECT * FROM client_kontruksi WHERE ck_nama='$ck_nama'";
         $pr_ck = mysqli_query($koneksi, $qp_ck);
+
+        $qhk = "INSERT INTO kontruksi (hk_tracking, hk_tanggal, hk_keterangan) VALUES ('$ck_tracking', '$ck_tanggal', '$ck_keterangan')";
+        $rhk = mysqli_query($koneksi_sc, $qhk);
+        
         if(isset($pr_ck)){
             $d_pr = mysqli_fetch_assoc($pr_ck);
             $id_ck = $d_pr["id_ck"];
@@ -186,9 +200,15 @@ Contributor & Credit:
                 " - ".mysqli_error($koneksi));
                 echo "<script>alert('Server sedang bermasalah ❌');window.location='../clientk.php';</script>";
         } else {
-            // Log web
-            log_web_clientk_data($usr_session, $nm_session, $id_ck);
-            echo "<script>alert('Data berhasil ditambah ✔');window.location='../printdk.php?id_ck=". $id_ck ."';</script>";
+            if(!$rhk){
+                die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
+                " - ".mysqli_error($koneksi));
+                echo "<script>alert('Server sedang bermasalah ❌');window.location='../clientk.php';</script>";
+            }else{
+                // Log web
+                log_web_clientk_data($usr_session, $nm_session, $id_ck);
+                echo "<script>alert('Data berhasil ditambah ✔');window.location='../printdk.php?id_ck=". $id_ck ."';</script>";
+            }
         }
     }else if(isset($_POST["tambah_faq"])){
         $faq_pertanyaan = $_POST["pertanyaan"];

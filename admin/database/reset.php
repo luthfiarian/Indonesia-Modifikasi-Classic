@@ -14,6 +14,21 @@ Contributor & Credit:
 <?php 
 include 'connectiondb.php'; include 'important.php';
 include 'system_detail.php';
+
+// Reset History Mobil
+function reset_mobil(){
+  global $koneksi_sc;
+  $reset_mobil = mysqli_query($koneksi_sc, "TRUNCATE TABLE mobil");
+  return $reset_mobil;
+}
+
+// Reset History Kontruksi
+function reset_kontruksi(){
+  global $koneksi_sc;
+  $reset_kontruksi = mysqli_query($koneksi_sc, "TRUNCATE TABLE kontruksi");
+  return $reset_kontruksi;
+}
+
 echo "<html style='display: none';></html>";
 
     $kategori_admin = $_SESSION["kategori"];
@@ -43,6 +58,7 @@ echo "<html style='display: none';></html>";
                 if(!isset($clientdm_r)){
                   echo "<script>alert('Kesalahan Perintah Dalam Reset ❌');window.location='../setting.php';</script>";
                 }else{
+                  reset_mobil();
                   echo "<script>alert('Hayooo Ngapain?😲');alert('Data pelanggan mobil sudah direset 🤭');window.location='../setting.php';</script>";
                 }
             }else{
@@ -57,6 +73,7 @@ echo "<html style='display: none';></html>";
                 if(!isset($clientdk_r)){
                   echo "<script>alert('Kesalahan Perintah Dalam Reset ❌');window.location='../setting.php';</script>";
                 }else{
+                  reset_kontruksi();
                   echo "<script>alert('Hayooo Ngapain?😲');alert('Data pelanggan kontruksi sudah direset 🤭');window.location='../setting.php';</script>";
                 }
             }else{
